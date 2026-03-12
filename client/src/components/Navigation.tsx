@@ -1,17 +1,16 @@
 /*
- * DESIGN: Editorial Longform — Magazine-Style Navigation
- * Minimal top bar with serif wordmark and mono section links.
- * Thin bottom border, generous padding, warm cream background.
+ * DESIGN: Haiyun's Little Forest — Soft teal-green nav
+ * Playfair Display wordmark, Nunito body, JetBrains Mono links.
+ * Tabs: About | Fun Facts | AI Diary | Contact
  */
 
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, TreePine } from "lucide-react";
 
 const NAV_ITEMS = [
   { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
-  { label: "Education", href: "#education" },
-  { label: "Skills", href: "#skills" },
+  { label: "Fun Facts", href: "#funfacts" },
+  { label: "AI Diary", href: "#diary" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -29,26 +28,27 @@ export default function Navigation() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-cream/90 backdrop-blur-md shadow-[0_1px_0_0_oklch(0.88_0.015_60)]"
+          ? "bg-forest-mist/90 backdrop-blur-md shadow-[0_1px_0_0_oklch(0.88_0.015_170)]"
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-[1200px] mx-auto px-5 sm:px-8 lg:px-12 flex items-center justify-between h-16 sm:h-20">
+      <div className="max-w-[1100px] mx-auto px-5 sm:px-8 lg:px-12 flex items-center justify-between h-14 sm:h-18">
         {/* Wordmark */}
         <a
           href="#"
-          className="font-display text-lg sm:text-xl font-semibold tracking-tight text-charcoal hover:text-sienna transition-colors duration-300"
+          className="flex items-center gap-2 font-display text-base sm:text-lg font-semibold tracking-tight text-forest-deep hover:text-forest-teal transition-colors duration-300"
         >
-          Haiyun HE
+          <TreePine size={18} className="text-forest-teal" />
+          Haiyun's Little Forest
         </a>
 
         {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-7">
           {NAV_ITEMS.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="font-mono text-xs tracking-widest uppercase text-charcoal-light hover:text-sienna transition-colors duration-300"
+              className="font-mono text-[11px] tracking-widest uppercase text-forest-text-light hover:text-forest-teal transition-colors duration-300"
             >
               {item.label}
             </a>
@@ -58,7 +58,7 @@ export default function Navigation() {
         {/* Mobile toggle */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden text-charcoal hover:text-sienna transition-colors"
+          className="md:hidden text-forest-deep hover:text-forest-teal transition-colors"
           aria-label="Toggle menu"
         >
           {mobileOpen ? <X size={22} /> : <Menu size={22} />}
@@ -71,13 +71,13 @@ export default function Navigation() {
           mobileOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="bg-cream/95 backdrop-blur-md border-t border-border px-5 py-6 flex flex-col gap-5">
+        <div className="bg-forest-mist/95 backdrop-blur-md border-t border-border px-5 py-5 flex flex-col gap-4">
           {NAV_ITEMS.map((item) => (
             <a
               key={item.href}
               href={item.href}
               onClick={() => setMobileOpen(false)}
-              className="font-mono text-xs tracking-widest uppercase text-charcoal-light hover:text-sienna transition-colors duration-300"
+              className="font-mono text-[11px] tracking-widest uppercase text-forest-text-light hover:text-forest-teal transition-colors duration-300"
             >
               {item.label}
             </a>

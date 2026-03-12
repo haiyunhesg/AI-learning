@@ -3,6 +3,12 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/*
+ * DESIGN: "Haiyun's Little Forest" — Soft Blue-Green Nature Theme
+ * Nunito body, Playfair Display headlines, JetBrains Mono details.
+ * Soft teal-green palette, film-grain nature imagery, literary & artistic vibe.
+ */
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -41,54 +47,57 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  /* Editorial color tokens */
-  --color-sienna: oklch(0.58 0.14 35);
-  --color-sienna-light: oklch(0.68 0.12 35);
-  --color-cream: oklch(0.97 0.01 80);
-  --color-warm-white: oklch(0.98 0.005 80);
-  --color-charcoal: oklch(0.22 0.01 60);
-  --color-charcoal-light: oklch(0.35 0.01 60);
-  --color-warm-gray: oklch(0.75 0.01 60);
+  /* Custom forest palette */
+  --color-forest-mist: oklch(0.97 0.008 175);
+  --color-forest-cream: oklch(0.98 0.005 100);
+  --color-forest-deep: oklch(0.30 0.04 175);
+  --color-forest-text: oklch(0.25 0.03 175);
+  --color-forest-text-light: oklch(0.45 0.03 175);
+  --color-forest-teal: oklch(0.55 0.10 175);
+  --color-forest-teal-light: oklch(0.70 0.08 175);
+  --color-forest-sage: oklch(0.80 0.05 150);
+  --color-forest-warm: oklch(0.92 0.015 90);
+  --color-forest-leaf: oklch(0.60 0.12 155);
 
   --font-display: "Playfair Display", Georgia, serif;
-  --font-body: "Source Sans 3", "Source Sans Pro", system-ui, sans-serif;
+  --font-body: "Nunito", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", "Fira Code", monospace;
 }
 
 :root {
-  --radius: 0.25rem;
-  --background: oklch(0.97 0.01 80);
-  --foreground: oklch(0.22 0.01 60);
-  --card: oklch(0.98 0.005 80);
-  --card-foreground: oklch(0.22 0.01 60);
-  --popover: oklch(0.98 0.005 80);
-  --popover-foreground: oklch(0.22 0.01 60);
-  --primary: oklch(0.58 0.14 35);
-  --primary-foreground: oklch(0.98 0.005 80);
-  --secondary: oklch(0.94 0.01 80);
-  --secondary-foreground: oklch(0.35 0.01 60);
-  --muted: oklch(0.92 0.01 80);
-  --muted-foreground: oklch(0.55 0.01 60);
-  --accent: oklch(0.94 0.01 80);
-  --accent-foreground: oklch(0.22 0.01 60);
+  --radius: 0.5rem;
+  --background: oklch(0.97 0.008 175);
+  --foreground: oklch(0.25 0.03 175);
+  --card: oklch(0.98 0.006 170);
+  --card-foreground: oklch(0.25 0.03 175);
+  --popover: oklch(0.98 0.006 170);
+  --popover-foreground: oklch(0.25 0.03 175);
+  --primary: oklch(0.55 0.10 175);
+  --primary-foreground: oklch(0.98 0.005 175);
+  --secondary: oklch(0.93 0.015 170);
+  --secondary-foreground: oklch(0.35 0.03 175);
+  --muted: oklch(0.94 0.01 170);
+  --muted-foreground: oklch(0.50 0.03 175);
+  --accent: oklch(0.93 0.015 170);
+  --accent-foreground: oklch(0.25 0.03 175);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.88 0.015 60);
-  --input: oklch(0.88 0.015 60);
-  --ring: oklch(0.58 0.14 35);
-  --chart-1: oklch(0.58 0.14 35);
-  --chart-2: oklch(0.68 0.12 35);
-  --chart-3: oklch(0.48 0.12 35);
-  --chart-4: oklch(0.75 0.01 60);
-  --chart-5: oklch(0.35 0.01 60);
-  --sidebar: oklch(0.97 0.01 80);
-  --sidebar-foreground: oklch(0.22 0.01 60);
-  --sidebar-primary: oklch(0.58 0.14 35);
-  --sidebar-primary-foreground: oklch(0.98 0.005 80);
-  --sidebar-accent: oklch(0.94 0.01 80);
-  --sidebar-accent-foreground: oklch(0.22 0.01 60);
-  --sidebar-border: oklch(0.88 0.015 60);
-  --sidebar-ring: oklch(0.58 0.14 35);
+  --border: oklch(0.90 0.015 170);
+  --input: oklch(0.90 0.015 170);
+  --ring: oklch(0.55 0.10 175);
+  --chart-1: oklch(0.55 0.10 175);
+  --chart-2: oklch(0.60 0.12 155);
+  --chart-3: oklch(0.70 0.08 175);
+  --chart-4: oklch(0.45 0.06 175);
+  --chart-5: oklch(0.80 0.05 150);
+  --sidebar: oklch(0.96 0.01 175);
+  --sidebar-foreground: oklch(0.25 0.03 175);
+  --sidebar-accent: oklch(0.93 0.015 170);
+  --sidebar-accent-foreground: oklch(0.25 0.03 175);
+  --sidebar-border: oklch(0.90 0.015 170);
+  --sidebar-ring: oklch(0.55 0.10 175);
+  --sidebar-primary: oklch(0.55 0.10 175);
+  --sidebar-primary-foreground: oklch(0.98 0.005 175);
 }
 
 @layer base {
@@ -96,16 +105,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
-    font-family: var(--font-body);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-display);
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    line-height: 1.15;
+    @apply bg-background text-foreground font-body;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
@@ -125,8 +125,8 @@
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   .flex {
@@ -136,65 +136,57 @@
 
   @media (min-width: 640px) {
     .container {
-      padding-left: 2rem;
-      padding-right: 2rem;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
     }
   }
 
   @media (min-width: 1024px) {
     .container {
-      padding-left: 3rem;
-      padding-right: 3rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
       max-width: 1200px;
     }
   }
 
-  /* Editorial typography utilities */
-  .font-display {
+  /* Pull quote — literary style */
+  .pull-quote {
     font-family: var(--font-display);
-  }
-  .font-body {
-    font-family: var(--font-body);
-  }
-  .font-mono {
-    font-family: var(--font-mono);
+    font-style: italic;
+    color: var(--color-forest-teal);
+    border-left: 2px solid var(--color-forest-teal-light);
+    padding-left: 1.25rem;
+    line-height: 1.6;
   }
 
-  /* Section number styling */
+  /* Section number — oversized watermark */
   .section-number {
     font-family: var(--font-display);
     font-weight: 300;
     font-style: italic;
-    color: oklch(0.58 0.14 35 / 0.25);
-    line-height: 1;
+    color: var(--color-forest-teal-light);
+    opacity: 0.2;
   }
 
-  /* Horizontal rule editorial style */
+  /* Horizontal rule — gradient fade */
   .editorial-rule {
     border: none;
     height: 1px;
-    background: linear-gradient(to right, oklch(0.58 0.14 35 / 0.4), oklch(0.88 0.015 60 / 0.2));
+    background: linear-gradient(
+      to right,
+      var(--color-forest-teal-light),
+      transparent
+    );
   }
 
-  /* Pull quote styling */
-  .pull-quote {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-weight: 400;
-    line-height: 1.4;
-    color: oklch(0.35 0.01 60);
-    border-left: 3px solid oklch(0.58 0.14 35);
-    padding-left: 1.5rem;
+  /* Film grain overlay */
+  .film-grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
   }
-}
-
-/* Smooth scroll */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Selection color */
-::selection {
-  background: oklch(0.58 0.14 35 / 0.2);
-  color: oklch(0.22 0.01 60);
 }

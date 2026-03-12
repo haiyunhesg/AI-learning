@@ -1,42 +1,49 @@
 /*
- * DESIGN: Editorial Longform — Section Header
- * Oversized italic section number + title + horizontal rule.
+ * DESIGN: Haiyun's Little Forest — Section Header
+ * Soft teal accent, Playfair Display title, gentle gradient rule.
  */
 
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 interface SectionHeaderProps {
-  number: string;
   title: string;
   subtitle?: string;
+  light?: boolean;
 }
 
-export default function SectionHeader({ number, title, subtitle }: SectionHeaderProps) {
+export default function SectionHeader({ title, subtitle, light }: SectionHeaderProps) {
   const { ref, isVisible } = useScrollReveal(0.2);
 
   return (
     <div
       ref={ref}
-      className={`mb-12 sm:mb-16 transition-all duration-700 ${
+      className={`mb-10 sm:mb-14 transition-all duration-700 ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
       }`}
     >
-      <div className="flex items-end gap-4 sm:gap-6 mb-4">
-        <span className="section-number text-6xl sm:text-8xl lg:text-9xl leading-none -mb-1">
-          {number}
-        </span>
-        <div className="pb-2">
-          <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-semibold text-charcoal tracking-tight">
-            {title}
-          </h2>
-          {subtitle && (
-            <p className="font-mono text-xs tracking-widest uppercase text-muted-foreground mt-1">
-              {subtitle}
-            </p>
-          )}
-        </div>
-      </div>
-      <hr className="editorial-rule" />
+      <h2
+        className={`font-display text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight mb-2 ${
+          light ? "text-white/90" : "text-forest-deep"
+        }`}
+      >
+        {title}
+      </h2>
+      {subtitle && (
+        <p
+          className={`font-mono text-[11px] tracking-widest uppercase mt-1 ${
+            light ? "text-white/50" : "text-forest-text-light"
+          }`}
+        >
+          {subtitle}
+        </p>
+      )}
+      <hr
+        className={`mt-4 border-none h-px ${
+          light
+            ? "bg-gradient-to-r from-white/30 to-transparent"
+            : "bg-gradient-to-r from-forest-teal-light to-transparent"
+        }`}
+      />
     </div>
   );
 }
