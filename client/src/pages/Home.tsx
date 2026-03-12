@@ -24,11 +24,11 @@ import {
   Sparkles,
 } from "lucide-react";
 
-/* ─── Image URLs (Garden of Words style) ─── */
-const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/gw-hero-forest-R5Cr7CWsTHyWdzKgoBys8c.webp";
-const GARDEN_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/gw-garden-stream-FBafiHjtikSkMGJwuU4pMb.webp";
-const OCEAN_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/gw-ocean-coast-D5QADovyV6cjLWQyUqrm6a.webp";
-const MEADOW_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/gw-meadow-light-mx4eptFQWkzFXmefJKgb3H.webp";
+/* ─── Image URLs (Hana & Alice film style) ─── */
+const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/ha-hero-forest-eoGFgAVtSKwqkmbUD7a69Z.webp";
+const GARDEN_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/ha-garden-stream-dmUYWfNwbnAEQ4wQ6bqxpS.webp";
+const OCEAN_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/ha-ocean-coast-Fz5YVsgQkTrwjGSCJzwEve.webp";
+const MEADOW_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/ha-meadow-light-JwQH6HDNzyyCSUmszfo9hf.webp";
 
 /* ─── Personal Photos ─── */
 const PORTRAIT_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/haiyun-portrait_8aca6323.webp";
@@ -169,11 +169,6 @@ function AboutSection() {
                   alt="Haiyun in the forest, autumn vibes"
                   className="w-full aspect-[3/4] object-cover"
                 />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-forest-deep/50 to-transparent p-4">
-                  <p className="font-mono text-[10px] tracking-widest uppercase text-white/80">
-                    Finding peace in small moments
-                  </p>
-                </div>
               </div>
             </Reveal>
           </div>
@@ -309,7 +304,6 @@ function FunFactsSection() {
       title: "Cat Mom to Hazelnut 榛宝",
       description:
         "I adopted a gorgeous long-haired cat named Hazelnut (榛宝). She's fluffy, dramatic, and the undisputed queen of my apartment. Permanent cat lover status: confirmed.",
-      image: HAZELNUT_IMG,
     },
     {
       emoji: "🌐",
@@ -340,11 +334,12 @@ function FunFactsSection() {
       <div className="relative z-10 max-w-[1100px] mx-auto px-5 sm:px-8 lg:px-12">
         <SectionHeader title="Fun Facts" subtitle="Some random things about me" />
 
-        <div className="space-y-5">
+        {/* Top row: Fun facts cards in a 2-column grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
           {facts.map((fact, i) => (
             <Reveal key={i} delay={i * 80}>
-              <div className="group flex gap-4 sm:gap-6 p-5 sm:p-6 border border-border rounded-lg bg-white/60 backdrop-blur-sm hover:bg-white/80 hover:border-forest-teal-light/40 transition-all duration-400">
-                <div className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-forest-mist flex items-center justify-center text-lg sm:text-xl">
+              <div className="group flex gap-4 p-5 sm:p-6 border border-border rounded-lg bg-white/60 backdrop-blur-sm hover:bg-white/80 hover:border-forest-teal-light/40 transition-all duration-400 h-full">
+                <div className="shrink-0 w-10 h-10 rounded-full bg-forest-mist flex items-center justify-center text-lg">
                   {fact.emoji}
                 </div>
                 <div className="flex-1">
@@ -354,20 +349,31 @@ function FunFactsSection() {
                   <p className="font-body text-sm leading-relaxed text-forest-text-light">
                     {fact.description}
                   </p>
-                  {fact.image && (
-                    <div className="mt-4 rounded-xl overflow-hidden shadow-md max-w-[240px]">
-                      <img
-                        src={fact.image}
-                        alt={fact.title}
-                        className="w-full aspect-square object-cover hover:scale-105 transition-transform duration-500"
-                      />
-                    </div>
-                  )}
                 </div>
               </div>
             </Reveal>
           ))}
         </div>
+
+        {/* Hazelnut photo card — full width, cinematic style */}
+        <Reveal delay={facts.length * 80}>
+          <div className="relative rounded-2xl overflow-hidden shadow-lg group">
+            <img
+              src={HAZELNUT_IMG}
+              alt="Hazelnut the cat"
+              className="w-full aspect-[21/9] object-cover object-top group-hover:scale-[1.02] transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/60 via-transparent to-transparent" />
+            <div className="absolute bottom-4 sm:bottom-6 left-5 sm:left-8">
+              <p className="font-display text-lg sm:text-xl font-semibold text-white/90 mb-1">
+                Hazelnut 榛宝
+              </p>
+              <p className="font-body text-xs sm:text-sm text-white/70">
+                The fluffy queen of my apartment
+              </p>
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -506,10 +512,13 @@ function AIDiarySection() {
                 That's how this website was born. I used Manus (with free credits they gave me, bless them) and in about thirty minutes, I went from "I should really make a personal website someday" to... well, this. The last time I tried building a website was on Weebly, and we all know how that ended. (Spoiler: it didn't.)
               </p>
               <p>
-                Honestly, the whole experience was kind of magical. I just described what I wanted, and it appeared. Like ordering food delivery, but for code. I'm planning to use this little corner to document my AI creation adventures going forward.
+                Honestly, the whole experience was kind of magical. I just described what I wanted, and it appeared. Like ordering food delivery, but for code.
               </p>
               <p>
-                Here's what I believe: AI shouldn't scare creators — it should empower them. Creativity is a deeply human thing, and tools like this just give us new brushes to paint with. The canvas is still ours.
+                Here's the plot twist though: the first version took maybe fifteen minutes. I just gave Manus my LinkedIn link, and boom — a decent-looking website appeared. But "decent" isn't really my style. So I spent another thirty-plus minutes tweaking prompts, adjusting the tone, swapping out the corporate-speak for something that actually sounds like me. Turns out, getting AI to match your personality takes longer than getting it to write your resume. Who knew?
+              </p>
+              <p>
+                I'm planning to use this little corner to document my AI creation adventures going forward. Here's what I believe: AI shouldn't scare creators — it should empower them. Creativity is a deeply human thing, and tools like this just give us new brushes to paint with. The canvas is still ours.
               </p>
             </div>
 
@@ -602,18 +611,7 @@ function ContactSection() {
             </Reveal>
           </div>
 
-          <div className="lg:col-span-5 flex items-end">
-            <Reveal direction="right" delay={200}>
-              <div className="w-full">
-                <p className="pull-quote text-lg sm:text-xl">
-                  "creativity never dies, even with AI"
-                </p>
-                <p className="font-mono text-[11px] text-forest-text-light/60 mt-3">
-                  — Haiyun 何海韵
-                </p>
-              </div>
-            </Reveal>
-          </div>
+
         </div>
       </div>
     </section>
