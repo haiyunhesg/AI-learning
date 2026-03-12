@@ -25,7 +25,7 @@ import {
 } from "lucide-react";
 
 /* ─── Image URLs (Hana & Alice film style) ─── */
-const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/ha-hero-forest-eoGFgAVtSKwqkmbUD7a69Z.webp";
+const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/hero-option-3-M7xwbJFk3GBFt3RQ8p5gq4.webp";
 const GARDEN_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/ha-garden-stream-dmUYWfNwbnAEQ4wQ6bqxpS.webp";
 const OCEAN_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/ha-ocean-coast-Fz5YVsgQkTrwjGSCJzwEve.webp";
 const MEADOW_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/ha-meadow-light-JwQH6HDNzyyCSUmszfo9hf.webp";
@@ -302,12 +302,6 @@ function FunFactsSection() {
       description: `I've been learning Japanese on Duolingo for ${streakDays} consecutive days (and counting!). My Japanese score is 85/100. Once I finish the course, I dream of living in Japan, attending a language school, and passing the JLPT N2 exam.`,
     },
     {
-      emoji: "🐱",
-      title: "Cat Mom to Hazelnut 榛宝",
-      description:
-        "I adopted a gorgeous long-haired cat named Hazelnut (榛宝). She's fluffy, dramatic, and the undisputed queen of my apartment. Permanent cat lover status: confirmed.",
-    },
-    {
       emoji: "🌐",
       title: "The Website That Never Was",
       description:
@@ -320,10 +314,10 @@ function FunFactsSection() {
         "I used to work in the film industry and even have my own IMDb page! It was a fascinating world of storytelling that still influences how I think about products today.",
     },
     {
-      emoji: "✨",
-      title: "My Biggest Wish",
+      emoji: "🐱",
+      title: "Cat Mom to Hazelnut 榛宝",
       description:
-        "Right now, what I want most is freedom — freedom in time and location, so I can create more things I truly love. Life is short; make things that matter to you.",
+        "I adopted a gorgeous long-haired cat named Hazelnut (榛宝). She's fluffy, dramatic, and the undisputed queen of my apartment. Permanent cat lover status: confirmed.",
     },
   ];
 
