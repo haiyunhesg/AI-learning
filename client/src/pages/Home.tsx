@@ -32,7 +32,7 @@ const MEADOW_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8
 
 /* ─── Personal Photos ─── */
 const PORTRAIT_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/haiyun-portrait_8aca6323.webp";
-const HAZELNUT_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/hazelnut-cat_b799c86c.jpg";
+const HAZELNUT_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/hazelnut-edited_e42818fc.png";
 const HAZELNUT_FLOOR_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/hazelnut-floor_ea717f57.jpg";
 const HAZELNUT_LADDER_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/hazelnut-ladder_e176554f.jpg";
 
@@ -365,7 +365,7 @@ function FunFactsSection() {
             </div>
             <div className="grid grid-cols-3 gap-3 sm:gap-4">
               {[
-                { src: HAZELNUT_IMG, alt: "Hazelnut with strawberry cake background", caption: "Posing for the camera" },
+                { src: HAZELNUT_IMG, alt: "Hazelnut sitting on wood floor with a toy", caption: "Catch of the day" },
                 { src: HAZELNUT_FLOOR_IMG, alt: "Hazelnut lying on the floor looking back", caption: "What do you want?" },
                 { src: HAZELNUT_LADDER_IMG, alt: "Hazelnut sitting on a ladder looking up", caption: "Queen of the ladder" },
               ].map((photo, i) => (
