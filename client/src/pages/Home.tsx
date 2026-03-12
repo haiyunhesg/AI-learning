@@ -1,38 +1,34 @@
 /*
  * DESIGN: Haiyun's Little Forest — Soft Blue-Green Nature Theme
- * Playfair Display headlines, Nunito body, JetBrains Mono details.
- * Forest mist background, teal accents, film-grain nature imagery.
- * Structure: Hero → About (with experience/education/skills) → Fun Facts → AI Diary → Contact
+ * Garden of Words (言叶之庭) anime-style imagery
+ * Structure: Hero → About → Fun Facts → AI Diary (with comments) → Contact
  */
 
 import Navigation from "@/components/Navigation";
 import SectionHeader from "@/components/SectionHeader";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { useMemo } from "react";
+import { trpc } from "@/lib/trpc";
+import { useMemo, useState } from "react";
 import {
   MapPin,
   Mail,
   Linkedin,
   ArrowUpRight,
   TreePine,
-  Cat,
-  Globe,
-  Flame,
-  Film,
-  Sparkles,
-  Heart,
-  BookOpen,
-  Briefcase,
-  GraduationCap,
   Pen,
   Calendar,
+  Send,
+  MessageCircle,
+  Briefcase,
+  GraduationCap,
+  Sparkles,
 } from "lucide-react";
 
-/* ─── Image URLs ─── */
-const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/hero-forest-57JVaM6Bx88nSn5Ap7eG6r.webp";
-const GARDEN_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/garden-stream-PPwygqFw9HGT6aEjcpcxnJ.webp";
-const OCEAN_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/ocean-coast-bMDTSL2EtHVfCfP39osFBS.webp";
-const MEADOW_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/meadow-light-6ZkGVtr3GEtHziYVmYQs7p.webp";
+/* ─── Image URLs (Garden of Words style) ─── */
+const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/gw-hero-forest-R5Cr7CWsTHyWdzKgoBys8c.webp";
+const GARDEN_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/gw-garden-stream-FBafiHjtikSkMGJwuU4pMb.webp";
+const OCEAN_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/gw-ocean-coast-D5QADovyV6cjLWQyUqrm6a.webp";
+const MEADOW_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/gw-meadow-light-mx4eptFQWkzFXmefJKgb3H.webp";
 
 /* ─── Reveal wrapper ─── */
 function Reveal({
@@ -103,7 +99,7 @@ function HeroSection() {
 
           <Reveal delay={600}>
             <p className="font-body text-base sm:text-lg text-forest-text-light leading-relaxed max-w-lg mb-6">
-              a product manager / AI learner / content creator / ex-film worker / permanent cat lover
+              A product manager / AI learner / content creator / ex-film worker / mother of a cat
             </p>
           </Reveal>
 
@@ -142,7 +138,6 @@ function AboutSection() {
       <div className="max-w-[1100px] mx-auto px-5 sm:px-8 lg:px-12">
         <SectionHeader title="About Me" subtitle="A little bit about who I am" />
 
-        {/* Intro */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start mb-16 sm:mb-24">
           <div className="lg:col-span-7">
             <Reveal>
@@ -167,8 +162,8 @@ function AboutSection() {
               <div className="relative rounded-lg overflow-hidden">
                 <img
                   src={GARDEN_IMG}
-                  alt="A serene garden with a stream"
-                  className="w-full aspect-[4/5] object-cover"
+                  alt="A serene Japanese garden"
+                  className="w-full aspect-[3/4] object-cover"
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-forest-deep/60 to-transparent p-4">
                   <p className="font-mono text-[10px] tracking-widest uppercase text-white/70">
@@ -290,8 +285,6 @@ function AboutSection() {
 
 /* ─── FUN FACTS ─── */
 function FunFactsSection() {
-  // Calculate Duolingo streak: started counting from a base date
-  // 965 days as of March 12, 2026
   const streakDays = useMemo(() => {
     const baseDate = new Date("2026-03-12");
     const baseStreak = 965;
@@ -303,49 +296,38 @@ function FunFactsSection() {
 
   const facts = [
     {
-      icon: Flame,
       emoji: "🦉",
       title: `Duolingo ${streakDays}-Day Streak`,
       description: `I've been learning Japanese on Duolingo for ${streakDays} consecutive days (and counting!). My Japanese score is 85/100. Once I finish the course, I dream of living in Japan, attending a language school, and passing the JLPT N2 exam.`,
-      color: "text-orange-500",
     },
     {
-      icon: Cat,
       emoji: "🐱",
       title: "Cat Mom to Hazelnut 榛宝",
       description:
         "I adopted a gorgeous long-haired cat named Hazelnut (榛宝). She's fluffy, dramatic, and the undisputed queen of my apartment. Permanent cat lover status: confirmed.",
-      color: "text-amber-600",
     },
     {
-      icon: Globe,
       emoji: "🌐",
       title: "The Website That Never Was",
       description:
         "I once tried building a personal website on Weebly. I got about halfway through before abandoning it entirely. Well... look at me now! (Thanks, AI.)",
-      color: "text-forest-teal",
     },
     {
-      icon: Film,
       emoji: "🎬",
       title: "Former Film Industry Worker",
       description:
         "I used to work in the film industry and even have my own IMDb page! It was a fascinating world of storytelling that still influences how I think about products today.",
-      color: "text-purple-500",
     },
     {
-      icon: Heart,
       emoji: "✨",
       title: "My Biggest Wish",
       description:
         "Right now, what I want most is freedom — freedom in time and location, so I can create more things I truly love. Life is short; make things that matter to you.",
-      color: "text-rose-500",
     },
   ];
 
   return (
     <section id="funfacts" className="py-16 sm:py-24 relative">
-      {/* Background image */}
       <div className="absolute inset-0 opacity-[0.04]">
         <img src={MEADOW_IMG} alt="" className="w-full h-full object-cover" />
       </div>
@@ -377,11 +359,101 @@ function FunFactsSection() {
   );
 }
 
+/* ─── COMMENT SECTION ─── */
+function CommentSection() {
+  const { data: comments, isLoading, refetch } = trpc.comments.list.useQuery();
+  const addComment = trpc.comments.add.useMutation({
+    onSuccess: () => {
+      setNickname("");
+      setContent("");
+      refetch();
+    },
+  });
+  const [nickname, setNickname] = useState("");
+  const [content, setContent] = useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!nickname.trim() || !content.trim()) return;
+    addComment.mutate({ nickname: nickname.trim(), content: content.trim() });
+  };
+
+  return (
+    <div className="mt-10">
+      <div className="flex items-center gap-2 mb-6">
+        <MessageCircle size={16} className="text-forest-teal-light" />
+        <h3 className="font-body text-sm font-semibold text-white/80">
+          Comments ({comments?.length ?? 0})
+        </h3>
+      </div>
+
+      {/* Comment form */}
+      <form onSubmit={handleSubmit} className="mb-6 p-4 sm:p-5 border border-white/10 rounded-lg bg-white/5 backdrop-blur-sm">
+        <div className="flex flex-col sm:flex-row gap-3 mb-3">
+          <input
+            type="text"
+            value={nickname}
+            onChange={(e) => setNickname(e.target.value)}
+            placeholder="Your name"
+            maxLength={100}
+            className="flex-1 sm:max-w-[200px] px-3 py-2 bg-white/10 border border-white/15 rounded-md text-sm text-white/90 placeholder:text-white/30 focus:outline-none focus:border-forest-teal-light/50 font-body"
+          />
+        </div>
+        <textarea
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          placeholder="Leave a comment..."
+          maxLength={2000}
+          rows={3}
+          className="w-full px-3 py-2 bg-white/10 border border-white/15 rounded-md text-sm text-white/90 placeholder:text-white/30 focus:outline-none focus:border-forest-teal-light/50 resize-none font-body mb-3"
+        />
+        <button
+          type="submit"
+          disabled={addComment.isPending || !nickname.trim() || !content.trim()}
+          className="inline-flex items-center gap-2 px-4 py-2 bg-forest-teal/80 hover:bg-forest-teal text-white text-sm rounded-md transition-colors duration-300 disabled:opacity-40 disabled:cursor-not-allowed font-body"
+        >
+          <Send size={13} />
+          {addComment.isPending ? "Sending..." : "Post Comment"}
+        </button>
+      </form>
+
+      {/* Comments list */}
+      {isLoading ? (
+        <p className="text-sm text-white/40 italic font-body">Loading comments...</p>
+      ) : comments && comments.length > 0 ? (
+        <div className="space-y-3">
+          {comments.map((c) => (
+            <div key={c.id} className="p-4 border border-white/8 rounded-lg bg-white/5">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-6 h-6 rounded-full bg-forest-teal/20 flex items-center justify-center">
+                  <span className="text-[10px] text-forest-teal-light font-semibold">
+                    {c.nickname.charAt(0).toUpperCase()}
+                  </span>
+                </div>
+                <span className="font-body text-xs font-medium text-white/70">{c.nickname}</span>
+                <span className="font-mono text-[10px] text-white/30">
+                  {new Date(c.createdAt).toLocaleDateString("en-US", {
+                    month: "short",
+                    day: "numeric",
+                    year: "numeric",
+                  })}
+                </span>
+              </div>
+              <p className="font-body text-sm leading-relaxed text-white/60">{c.content}</p>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p className="text-sm text-white/40 italic font-body">No comments yet. Be the first to say hi!</p>
+      )}
+    </div>
+  );
+}
+
 /* ─── AI DIARY ─── */
 function AIDiarySection() {
   return (
     <section id="diary" className="py-16 sm:py-24 relative">
-      {/* Subtle ocean background */}
       <div className="absolute inset-0">
         <img src={OCEAN_IMG} alt="" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-forest-deep/85" />
@@ -408,25 +480,28 @@ function AIDiarySection() {
 
             {/* Post title */}
             <h3 className="font-display text-lg sm:text-xl font-semibold text-white/90 mb-4 leading-snug">
-              Manus 用几十分钟帮我做了一个个人网站
+              Manus Built Me a Personal Website in Under an Hour
             </h3>
 
             {/* Post body */}
             <div className="space-y-4 font-body text-sm sm:text-base leading-relaxed text-white/70">
               <p>
-                最近我因为 AI 的发展很焦虑，觉得焦虑不如也进来玩一玩，所以我用了几十分钟快速做出了这个个人网站。并且用的还是 Manus 送给我的免费 credits！
+                So lately I've been having a bit of an existential crisis about AI. You know the kind — "robots are coming for our jobs" type of anxiety. But then I thought: instead of panicking on the sidelines, why not jump in and play?
               </p>
               <p>
-                我觉得很有趣，希望以后在这里记录自己的一些 AI creation 心得。
+                That's how this website was born. I used Manus (with free credits they gave me, bless them) and in about thirty minutes, I went from "I should really make a personal website someday" to... well, this. The last time I tried building a website was on Weebly, and we all know how that ended. (Spoiler: it didn't.)
               </p>
               <p>
-                我很热爱创造，AI 不应该让创作者恐惧，而是应该赋能创作者。
+                Honestly, the whole experience was kind of magical. I just described what I wanted, and it appeared. Like ordering food delivery, but for code. I'm planning to use this little corner to document my AI creation adventures going forward.
+              </p>
+              <p>
+                Here's what I believe: AI shouldn't scare creators — it should empower them. Creativity is a deeply human thing, and tools like this just give us new brushes to paint with. The canvas is still ours.
               </p>
             </div>
 
             {/* Tags */}
             <div className="flex flex-wrap gap-2 mt-6 pt-5 border-t border-white/10">
-              {["AI", "Manus", "创作", "个人网站"].map((tag) => (
+              {["AI", "Manus", "creativity", "personal website", "first post"].map((tag) => (
                 <span
                   key={tag}
                   className="font-mono text-[10px] tracking-wider px-3 py-1 rounded-full border border-white/15 text-white/50"
@@ -442,6 +517,11 @@ function AIDiarySection() {
           <p className="font-body text-sm text-white/40 text-center mt-8 italic">
             More posts coming soon...
           </p>
+        </Reveal>
+
+        {/* Comment Section */}
+        <Reveal delay={300}>
+          <CommentSection />
         </Reveal>
       </div>
     </section>
