@@ -30,6 +30,10 @@ const GARDEN_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8
 const OCEAN_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/gw-ocean-coast-D5QADovyV6cjLWQyUqrm6a.webp";
 const MEADOW_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/gw-meadow-light-mx4eptFQWkzFXmefJKgb3H.webp";
 
+/* ─── Personal Photos ─── */
+const PORTRAIT_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/haiyun-portrait_8aca6323.webp";
+const HAZELNUT_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/hazelnut-cat_b799c86c.jpg";
+
 /* ─── Reveal wrapper ─── */
 function Reveal({
   children,
@@ -159,14 +163,14 @@ function AboutSection() {
 
           <div className="lg:col-span-5 lg:mt-4">
             <Reveal direction="right" delay={200}>
-              <div className="relative rounded-lg overflow-hidden">
+              <div className="relative rounded-2xl overflow-hidden shadow-lg">
                 <img
-                  src={GARDEN_IMG}
-                  alt="A serene Japanese garden"
+                  src={PORTRAIT_IMG}
+                  alt="Haiyun in the forest, autumn vibes"
                   className="w-full aspect-[3/4] object-cover"
                 />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-forest-deep/60 to-transparent p-4">
-                  <p className="font-mono text-[10px] tracking-widest uppercase text-white/70">
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-forest-deep/50 to-transparent p-4">
+                  <p className="font-mono text-[10px] tracking-widest uppercase text-white/80">
                     Finding peace in small moments
                   </p>
                 </div>
@@ -305,6 +309,7 @@ function FunFactsSection() {
       title: "Cat Mom to Hazelnut 榛宝",
       description:
         "I adopted a gorgeous long-haired cat named Hazelnut (榛宝). She's fluffy, dramatic, and the undisputed queen of my apartment. Permanent cat lover status: confirmed.",
+      image: HAZELNUT_IMG,
     },
     {
       emoji: "🌐",
@@ -349,6 +354,15 @@ function FunFactsSection() {
                   <p className="font-body text-sm leading-relaxed text-forest-text-light">
                     {fact.description}
                   </p>
+                  {fact.image && (
+                    <div className="mt-4 rounded-xl overflow-hidden shadow-md max-w-[240px]">
+                      <img
+                        src={fact.image}
+                        alt={fact.title}
+                        className="w-full aspect-square object-cover hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                  )}
                 </div>
               </div>
             </Reveal>
