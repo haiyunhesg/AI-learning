@@ -33,6 +33,8 @@ const MEADOW_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8
 /* ─── Personal Photos ─── */
 const PORTRAIT_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/haiyun-portrait_8aca6323.webp";
 const HAZELNUT_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/hazelnut-cat_b799c86c.jpg";
+const HAZELNUT_FLOOR_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/hazelnut-floor_ea717f57.jpg";
+const HAZELNUT_LADDER_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/hazelnut-ladder_e176554f.jpg";
 
 /* ─── Reveal wrapper ─── */
 function Reveal({
@@ -355,22 +357,36 @@ function FunFactsSection() {
           ))}
         </div>
 
-        {/* Hazelnut photo card — full width, cinematic style */}
+        {/* Hazelnut photo gallery — 3 portrait photos in a row */}
         <Reveal delay={facts.length * 80}>
-          <div className="relative rounded-2xl overflow-hidden shadow-lg group">
-            <img
-              src={HAZELNUT_IMG}
-              alt="Hazelnut the cat"
-              className="w-full aspect-[21/9] object-cover object-top group-hover:scale-[1.02] transition-transform duration-700"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/60 via-transparent to-transparent" />
-            <div className="absolute bottom-4 sm:bottom-6 left-5 sm:left-8">
-              <p className="font-display text-lg sm:text-xl font-semibold text-white/90 mb-1">
-                Hazelnut 榛宝
+          <div className="mt-2">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="text-lg">🐱</span>
+              <h3 className="font-display text-lg sm:text-xl font-semibold text-forest-deep">
+                Hazelnut 榛宝 Gallery
+              </h3>
+              <p className="font-body text-sm text-forest-text-light/70 ml-1">
+                — the fluffy queen of my apartment
               </p>
-              <p className="font-body text-xs sm:text-sm text-white/70">
-                The fluffy queen of my apartment
-              </p>
+            </div>
+            <div className="grid grid-cols-3 gap-3 sm:gap-4">
+              {[
+                { src: HAZELNUT_IMG, alt: "Hazelnut with strawberry cake background", caption: "Posing for the camera" },
+                { src: HAZELNUT_FLOOR_IMG, alt: "Hazelnut lying on the floor looking back", caption: "What do you want?" },
+                { src: HAZELNUT_LADDER_IMG, alt: "Hazelnut sitting on a ladder looking up", caption: "Queen of the ladder" },
+              ].map((photo, i) => (
+                <div key={i} className="group relative rounded-xl overflow-hidden shadow-md bg-white/60">
+                  <img
+                    src={photo.src}
+                    alt={photo.alt}
+                    className="w-full aspect-[3/4] object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <p className="absolute bottom-2 sm:bottom-3 left-2 sm:left-3 right-2 font-body text-[10px] sm:text-xs text-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    {photo.caption}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </Reveal>
