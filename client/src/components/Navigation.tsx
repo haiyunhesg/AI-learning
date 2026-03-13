@@ -1,22 +1,24 @@
 /*
- * DESIGN: Haiyun's Little Forest — Soft teal-green nav
+ * DESIGN: Haiyun's Little Forest — Soft teal-green nav with language toggle
  * Playfair Display wordmark, Nunito body, JetBrains Mono links.
- * Tabs: About | Fun Facts | AI Diary | Contact
+ * Tabs: About | Fun Facts | AI Diary | Contact | EN/中
  */
 
 import { useState, useEffect } from "react";
-import { Menu, X, TreePine } from "lucide-react";
-
-const NAV_ITEMS = [
-  { label: "About", href: "#about" },
-  { label: "Fun Facts", href: "#funfacts" },
-  { label: "AI Diary", href: "#diary" },
-  { label: "Contact", href: "#contact" },
-];
+import { Menu, X, TreePine, Globe } from "lucide-react";
+import { useLang } from "@/contexts/LanguageContext";
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { lang, toggleLang, t } = useLang();
+
+  const NAV_ITEMS = [
+    { label: t("nav.about"), href: "#about" },
+    { label: t("nav.funfacts"), href: "#funfacts" },
+    { label: t("nav.diary"), href: "#diary" },
+    { label: t("nav.contact"), href: "#contact" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
@@ -39,7 +41,7 @@ export default function Navigation() {
           className="flex items-center gap-2 font-display text-base sm:text-lg font-semibold tracking-tight text-forest-deep hover:text-forest-teal transition-colors duration-300"
         >
           <TreePine size={18} className="text-forest-teal" />
-          Haiyun's Little Forest
+          {t("footer.brand")}
         </a>
 
         {/* Desktop nav */}
@@ -53,6 +55,16 @@ export default function Navigation() {
               {item.label}
             </a>
           ))}
+
+          {/* Language toggle */}
+          <button
+            onClick={toggleLang}
+            className="flex items-center gap-1.5 font-mono text-[11px] tracking-wider text-forest-text-light hover:text-forest-teal transition-colors duration-300 border border-forest-teal-light/30 rounded-full px-3 py-1 hover:border-forest-teal/50"
+            aria-label="Toggle language"
+          >
+            <Globe size={12} />
+            {lang === "en" ? "中文" : "EN"}
+          </button>
         </div>
 
         {/* Mobile toggle */}
@@ -82,6 +94,19 @@ export default function Navigation() {
               {item.label}
             </a>
           ))}
+
+          {/* Mobile language toggle */}
+          <button
+            onClick={() => {
+              toggleLang();
+              setMobileOpen(false);
+            }}
+            className="flex items-center gap-1.5 font-mono text-[11px] tracking-wider text-forest-text-light hover:text-forest-teal transition-colors duration-300 self-start"
+            aria-label="Toggle language"
+          >
+            <Globe size={12} />
+            {lang === "en" ? "切换中文" : "Switch to EN"}
+          </button>
         </div>
       </div>
     </nav>

@@ -1,12 +1,14 @@
 /*
  * DESIGN: Haiyun's Little Forest — Soft Blue-Green Nature Theme
- * Garden of Words (言叶之庭) anime-style imagery
+ * Hana & Alice / Our Little Sister film-style imagery
  * Structure: Hero → About → Fun Facts → AI Diary (with comments) → Contact
+ * Full EN/CN bilingual support via useLang()
  */
 
 import Navigation from "@/components/Navigation";
 import SectionHeader from "@/components/SectionHeader";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useLang } from "@/contexts/LanguageContext";
 import { trpc } from "@/lib/trpc";
 import { useMemo, useState } from "react";
 import {
@@ -71,6 +73,7 @@ function Reveal({
 
 /* ─── HERO ─── */
 function HeroSection() {
+  const { t, lang } = useLang();
   return (
     <section className="relative min-h-screen flex items-end pb-16 sm:pb-24 overflow-hidden">
       <div className="absolute inset-0">
@@ -84,28 +87,38 @@ function HeroSection() {
             <div className="flex items-center gap-2 mb-5">
               <TreePine size={16} className="text-forest-teal" />
               <p className="font-mono text-[11px] tracking-[0.2em] uppercase text-forest-teal">
-                Welcome to my little corner
+                {t("hero.welcome")}
               </p>
             </div>
           </Reveal>
 
           <Reveal delay={400}>
             <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-bold text-forest-deep tracking-tight leading-[0.95] mb-2">
-              Haiyun's
-              <br />
-              <span className="italic font-normal text-forest-teal">Little Forest</span>
+              {lang === "en" ? (
+                <>
+                  Haiyun's
+                  <br />
+                  <span className="italic font-normal text-forest-teal">Little Forest</span>
+                </>
+              ) : (
+                <>
+                  海韵的
+                  <br />
+                  <span className="italic font-normal text-forest-teal">小森林</span>
+                </>
+              )}
             </h1>
           </Reveal>
 
           <Reveal delay={500}>
             <p className="font-body text-sm text-forest-text-light mt-2 mb-5">
-              何海韵
+              {lang === "en" ? "何海韵" : "Haiyun HE"}
             </p>
           </Reveal>
 
           <Reveal delay={600}>
             <p className="font-body text-base sm:text-lg text-forest-text-light leading-relaxed max-w-lg mb-6">
-              A product manager / AI learner / content creator / ex-film worker / mother of a cat
+              {t("hero.tagline")}
             </p>
           </Reveal>
 
@@ -119,7 +132,7 @@ function HeroSection() {
                 href="#about"
                 className="group inline-flex items-center gap-2 font-mono text-[11px] tracking-widest uppercase text-forest-deep hover:text-forest-teal transition-colors duration-300"
               >
-                Explore
+                {t("hero.explore")}
                 <ArrowUpRight
                   size={13}
                   className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
@@ -139,26 +152,46 @@ function HeroSection() {
 
 /* ─── ABOUT (includes experience, education, skills) ─── */
 function AboutSection() {
+  const { t, lang } = useLang();
+
+  const skillKeys = [
+    "skill.product_strategy",
+    "skill.short_video",
+    "skill.live_streaming",
+    "skill.ecommerce",
+    "skill.content_monetization",
+    "skill.user_growth",
+    "skill.ab_testing",
+    "skill.data_analysis",
+    "skill.cross_functional",
+    "skill.storytelling",
+    "skill.creator_ecosystems",
+    "skill.sea_markets",
+    "skill.agile",
+    "skill.localization",
+    "skill.ai_tools",
+  ];
+
   return (
     <section id="about" className="py-16 sm:py-24">
       <div className="max-w-[1100px] mx-auto px-5 sm:px-8 lg:px-12">
-        <SectionHeader title="About Me" subtitle="A little bit about who I am" />
+        <SectionHeader title={t("about.title")} subtitle={t("about.subtitle")} />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start mb-16 sm:mb-24">
           <div className="lg:col-span-7">
             <Reveal>
               <p className="font-body text-base sm:text-lg leading-relaxed text-forest-text-light mb-5">
-                Hi there! I'm Haiyun (何海韵), currently living in sunny Singapore. By day I'm a product manager at Shopee, Southeast Asia's biggest e-commerce platform, where I get to work on fun things like short videos, live streaming, and figuring out how to make online shopping more engaging.
+                {t("about.p1")}
               </p>
             </Reveal>
             <Reveal delay={150}>
               <p className="font-body text-base sm:text-lg leading-relaxed text-forest-text-light mb-5">
-                My background is a mix of media and tech — I studied Media and Communication at City University of Hong Kong, which gave me a storyteller's perspective on building products. I care about the "why" behind every feature, not just the "how."
+                {t("about.p2")}
               </p>
             </Reveal>
             <Reveal delay={300}>
               <p className="font-body text-base sm:text-lg leading-relaxed text-forest-text-light">
-                Outside of work, I'm diving into AI, learning Japanese on Duolingo (almost 1000 days!), and taking care of my fluffy cat Hazelnut. I believe in staying curious and creating things that bring a little joy to the world.
+                {t("about.p3")}
               </p>
             </Reveal>
           </div>
@@ -182,7 +215,7 @@ function AboutSection() {
             <div className="flex items-center gap-3 mb-6">
               <Briefcase size={18} className="text-forest-teal" />
               <h3 className="font-display text-xl sm:text-2xl font-semibold text-forest-deep">
-                What I Do
+                {t("exp.title")}
               </h3>
             </div>
 
@@ -190,26 +223,26 @@ function AboutSection() {
               <Reveal delay={100}>
                 <div className="p-5 sm:p-6 border border-border rounded-lg bg-forest-cream/50 hover:border-forest-teal-light/50 transition-colors duration-300">
                   <h4 className="font-body text-sm font-semibold text-forest-deep mb-2">
-                    Shopee · Singapore
+                    {t("exp.shopee.title")}
                   </h4>
                   <p className="font-mono text-[10px] tracking-wider text-forest-text-light/70 uppercase mb-3">
-                    Product Management & Operations
+                    {t("exp.shopee.role")}
                   </p>
                   <p className="font-body text-sm leading-relaxed text-forest-text-light">
-                    Working on short video, live streaming, and e-commerce monetization. I help connect millions of users with content-driven shopping experiences across Southeast Asia.
+                    {t("exp.shopee.desc")}
                   </p>
                 </div>
               </Reveal>
               <Reveal delay={200}>
                 <div className="p-5 sm:p-6 border border-border rounded-lg bg-forest-cream/50 hover:border-forest-teal-light/50 transition-colors duration-300">
                   <h4 className="font-body text-sm font-semibold text-forest-deep mb-2">
-                    Previous Experience
+                    {t("exp.prev.title")}
                   </h4>
                   <p className="font-mono text-[10px] tracking-wider text-forest-text-light/70 uppercase mb-3">
-                    Product & Content Operations
+                    {t("exp.prev.role")}
                   </p>
                   <p className="font-body text-sm leading-relaxed text-forest-text-light">
-                    Built my foundation across digital media, content strategy, and user engagement. Also spent time in the film industry — a chapter I'm still proud of!
+                    {t("exp.prev.desc")}
                   </p>
                 </div>
               </Reveal>
@@ -223,19 +256,19 @@ function AboutSection() {
             <div className="flex items-center gap-3 mb-6">
               <GraduationCap size={18} className="text-forest-teal" />
               <h3 className="font-display text-xl sm:text-2xl font-semibold text-forest-deep">
-                Where I Studied
+                {t("edu.title")}
               </h3>
             </div>
 
             <div className="p-5 sm:p-6 border border-border rounded-lg bg-forest-cream/50">
               <h4 className="font-body text-base font-semibold text-forest-deep mb-1">
-                City University of Hong Kong
+                {t("edu.school")}
               </h4>
               <p className="font-body text-sm text-forest-teal mb-3">
-                Department of Media and Communication
+                {t("edu.dept")}
               </p>
               <p className="font-body text-sm leading-relaxed text-forest-text-light">
-                This is where I fell in love with storytelling and learned how media shapes the way we see the world. It taught me to think about products as narratives — every feature tells a story to the user.
+                {t("edu.desc")}
               </p>
             </div>
           </div>
@@ -247,33 +280,17 @@ function AboutSection() {
             <div className="flex items-center gap-3 mb-6">
               <Sparkles size={18} className="text-forest-teal" />
               <h3 className="font-display text-xl sm:text-2xl font-semibold text-forest-deep">
-                Things I'm Good At
+                {t("skills.title")}
               </h3>
             </div>
 
             <div className="flex flex-wrap gap-2.5">
-              {[
-                "Product Strategy",
-                "Short Video",
-                "Live Streaming",
-                "E-Commerce",
-                "Content Monetization",
-                "User Growth",
-                "A/B Testing",
-                "Data Analysis",
-                "Cross-functional Collaboration",
-                "Multimedia Storytelling",
-                "Creator Ecosystems",
-                "SEA Markets",
-                "Agile",
-                "Localization",
-                "AI Tools",
-              ].map((skill) => (
+              {skillKeys.map((key) => (
                 <span
-                  key={skill}
+                  key={key}
                   className="font-mono text-[11px] tracking-wide px-3.5 py-1.5 border border-border rounded-full text-forest-text-light hover:border-forest-teal-light hover:text-forest-teal transition-all duration-300 bg-white/40"
                 >
-                  {skill}
+                  {t(key)}
                 </span>
               ))}
             </div>
@@ -286,6 +303,8 @@ function AboutSection() {
 
 /* ─── FUN FACTS ─── */
 function FunFactsSection() {
+  const { t, lang } = useLang();
+
   const streakDays = useMemo(() => {
     const baseDate = new Date("2026-03-12");
     const baseStreak = 965;
@@ -297,28 +316,31 @@ function FunFactsSection() {
 
   const facts = [
     {
-      emoji: "🦉",
-      title: `Duolingo ${streakDays}-Day Streak`,
-      description: `I've been learning Japanese on Duolingo for ${streakDays} consecutive days (and counting!). My Japanese score is 85/100. Once I finish the course, I dream of living in Japan, attending a language school, and passing the JLPT N2 exam.`,
+      emoji: "\u{1F989}",
+      title: `${t("ff.duo.title_prefix")} ${streakDays}${t("ff.duo.title_suffix")}`,
+      description: t("ff.duo.desc").replace("{days}", String(streakDays)),
     },
     {
-      emoji: "🌐",
-      title: "The Website That Never Was",
-      description:
-        "I once tried building a personal website on Weebly. I got about halfway through before abandoning it entirely. Well... look at me now! (Thanks, AI.)",
+      emoji: "\u{1F310}",
+      title: t("ff.web.title"),
+      description: t("ff.web.desc"),
     },
     {
-      emoji: "🎬",
-      title: "Former Film Industry Worker",
-      description:
-        "I used to work in the film industry and even have my own IMDb page! It was a fascinating world of storytelling that still influences how I think about products today.",
+      emoji: "\u{1F3AC}",
+      title: t("ff.film.title"),
+      description: t("ff.film.desc"),
     },
     {
-      emoji: "🐱",
-      title: "Cat Mom to Hazelnut 榛宝",
-      description:
-        "I adopted a gorgeous long-haired cat named Hazelnut (榛宝). She's fluffy, dramatic, and the undisputed queen of my apartment. Permanent cat lover status: confirmed.",
+      emoji: "\u{1F431}",
+      title: t("ff.cat.title"),
+      description: t("ff.cat.desc"),
     },
+  ];
+
+  const catPhotos = [
+    { src: HAZELNUT_IMG, alt: "Hazelnut with a toy on wood floor", caption: t("ff.photo1") },
+    { src: HAZELNUT_FLOOR_IMG, alt: "Hazelnut lying on the floor looking back", caption: t("ff.photo2") },
+    { src: HAZELNUT_LADDER_IMG, alt: "Hazelnut sitting on a ladder looking up", caption: t("ff.photo3") },
   ];
 
   return (
@@ -328,9 +350,9 @@ function FunFactsSection() {
       </div>
 
       <div className="relative z-10 max-w-[1100px] mx-auto px-5 sm:px-8 lg:px-12">
-        <SectionHeader title="Fun Facts" subtitle="Some random things about me" />
+        <SectionHeader title={t("ff.title")} subtitle={t("ff.subtitle")} />
 
-        {/* Top row: Fun facts cards in a 2-column grid */}
+        {/* Fun facts cards in a 2-column grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
           {facts.map((fact, i) => (
             <Reveal key={i} delay={i * 80}>
@@ -351,24 +373,20 @@ function FunFactsSection() {
           ))}
         </div>
 
-        {/* Hazelnut photo gallery — 3 portrait photos in a row */}
+        {/* Hazelnut photo gallery — 3 portrait photos */}
         <Reveal delay={facts.length * 80}>
           <div className="mt-2">
             <div className="flex items-center gap-2 mb-4">
-              <span className="text-lg">🐱</span>
+              <span className="text-lg">{"\u{1F431}"}</span>
               <h3 className="font-display text-lg sm:text-xl font-semibold text-forest-deep">
-                Hazelnut 榛宝 Gallery
+                {t("ff.gallery.title")}
               </h3>
               <p className="font-body text-sm text-forest-text-light/70 ml-1">
-                — the fluffy queen of my apartment
+                {t("ff.gallery.subtitle")}
               </p>
             </div>
             <div className="grid grid-cols-3 gap-3 sm:gap-4">
-              {[
-                { src: HAZELNUT_IMG, alt: "Hazelnut sitting on wood floor with a toy", caption: "Catch of the day" },
-                { src: HAZELNUT_FLOOR_IMG, alt: "Hazelnut lying on the floor looking back", caption: "What do you want?" },
-                { src: HAZELNUT_LADDER_IMG, alt: "Hazelnut sitting on a ladder looking up", caption: "Queen of the ladder" },
-              ].map((photo, i) => (
+              {catPhotos.map((photo, i) => (
                 <div key={i} className="group relative rounded-xl overflow-hidden shadow-md bg-white/60">
                   <img
                     src={photo.src}
@@ -391,6 +409,7 @@ function FunFactsSection() {
 
 /* ─── COMMENT SECTION ─── */
 function CommentSection() {
+  const { t } = useLang();
   const { data: comments, isLoading, refetch } = trpc.comments.list.useQuery();
   const addComment = trpc.comments.add.useMutation({
     onSuccess: () => {
@@ -413,7 +432,7 @@ function CommentSection() {
       <div className="flex items-center gap-2 mb-6">
         <MessageCircle size={16} className="text-forest-teal-light" />
         <h3 className="font-body text-sm font-semibold text-white/80">
-          Comments ({comments?.length ?? 0})
+          {t("comments.title")} ({comments?.length ?? 0})
         </h3>
       </div>
 
@@ -424,7 +443,7 @@ function CommentSection() {
             type="text"
             value={nickname}
             onChange={(e) => setNickname(e.target.value)}
-            placeholder="Your name"
+            placeholder={t("comments.name")}
             maxLength={100}
             className="flex-1 sm:max-w-[200px] px-3 py-2 bg-white/10 border border-white/15 rounded-md text-sm text-white/90 placeholder:text-white/30 focus:outline-none focus:border-forest-teal-light/50 font-body"
           />
@@ -432,7 +451,7 @@ function CommentSection() {
         <textarea
           value={content}
           onChange={(e) => setContent(e.target.value)}
-          placeholder="Leave a comment..."
+          placeholder={t("comments.placeholder")}
           maxLength={2000}
           rows={3}
           className="w-full px-3 py-2 bg-white/10 border border-white/15 rounded-md text-sm text-white/90 placeholder:text-white/30 focus:outline-none focus:border-forest-teal-light/50 resize-none font-body mb-3"
@@ -443,13 +462,13 @@ function CommentSection() {
           className="inline-flex items-center gap-2 px-4 py-2 bg-forest-teal/80 hover:bg-forest-teal text-white text-sm rounded-md transition-colors duration-300 disabled:opacity-40 disabled:cursor-not-allowed font-body"
         >
           <Send size={13} />
-          {addComment.isPending ? "Sending..." : "Post Comment"}
+          {addComment.isPending ? t("comments.sending") : t("comments.submit")}
         </button>
       </form>
 
       {/* Comments list */}
       {isLoading ? (
-        <p className="text-sm text-white/40 italic font-body">Loading comments...</p>
+        <p className="text-sm text-white/40 italic font-body">{t("comments.loading")}</p>
       ) : comments && comments.length > 0 ? (
         <div className="space-y-3">
           {comments.map((c) => (
@@ -474,7 +493,7 @@ function CommentSection() {
           ))}
         </div>
       ) : (
-        <p className="text-sm text-white/40 italic font-body">No comments yet. Be the first to say hi!</p>
+        <p className="text-sm text-white/40 italic font-body">{t("comments.empty")}</p>
       )}
     </div>
   );
@@ -482,6 +501,7 @@ function CommentSection() {
 
 /* ─── AI DIARY ─── */
 function AIDiarySection() {
+  const { t } = useLang();
   return (
     <section id="diary" className="py-16 sm:py-24 relative">
       <div className="absolute inset-0">
@@ -490,7 +510,7 @@ function AIDiarySection() {
       </div>
 
       <div className="relative z-10 max-w-[1100px] mx-auto px-5 sm:px-8 lg:px-12">
-        <SectionHeader title="AI Diary" subtitle="My AI creation journal" light />
+        <SectionHeader title={t("diary.title")} subtitle={t("diary.subtitle")} light />
 
         <Reveal>
           <article className="p-6 sm:p-8 border border-white/10 rounded-lg bg-white/5 backdrop-blur-sm">
@@ -510,26 +530,16 @@ function AIDiarySection() {
 
             {/* Post title */}
             <h3 className="font-display text-lg sm:text-xl font-semibold text-white/90 mb-4 leading-snug">
-              Manus Built Me a Personal Website in Under an Hour
+              {t("diary.post1.title")}
             </h3>
 
             {/* Post body */}
             <div className="space-y-4 font-body text-sm sm:text-base leading-relaxed text-white/70">
-              <p>
-                So lately I've been having a bit of an existential crisis about AI. You know the kind — "robots are coming for our jobs" type of anxiety. But then I thought: instead of panicking on the sidelines, why not jump in and play?
-              </p>
-              <p>
-                That's how this website was born. I used Manus (with free credits they gave me, bless them) and in about thirty minutes, I went from "I should really make a personal website someday" to... well, this. The last time I tried building a website was on Weebly, and we all know how that ended. (Spoiler: it didn't.)
-              </p>
-              <p>
-                Honestly, the whole experience was kind of magical. I just described what I wanted, and it appeared. Like ordering food delivery, but for code.
-              </p>
-              <p>
-                Here's the plot twist though: the first version took maybe fifteen minutes. I just gave Manus my LinkedIn link, and boom — a decent-looking website appeared. But "decent" isn't really my style. So I spent another thirty-plus minutes tweaking prompts, adjusting the tone, swapping out the corporate-speak for something that actually sounds like me. Turns out, getting AI to match your personality takes longer than getting it to write your resume. Who knew?
-              </p>
-              <p>
-                I'm planning to use this little corner to document my AI creation adventures going forward. Here's what I believe: AI shouldn't scare creators — it should empower them. Creativity is a deeply human thing, and tools like this just give us new brushes to paint with. The canvas is still ours.
-              </p>
+              <p>{t("diary.post1.p1")}</p>
+              <p>{t("diary.post1.p2")}</p>
+              <p>{t("diary.post1.p3")}</p>
+              <p>{t("diary.post1.p4")}</p>
+              <p>{t("diary.post1.p5")}</p>
             </div>
 
             {/* Tags */}
@@ -548,7 +558,7 @@ function AIDiarySection() {
 
         <Reveal delay={200}>
           <p className="font-body text-sm text-white/40 text-center mt-8 italic">
-            More posts coming soon...
+            {t("diary.more")}
           </p>
         </Reveal>
 
@@ -563,16 +573,17 @@ function AIDiarySection() {
 
 /* ─── CONTACT ─── */
 function ContactSection() {
+  const { t } = useLang();
   return (
     <section id="contact" className="py-16 sm:py-24">
       <div className="max-w-[1100px] mx-auto px-5 sm:px-8 lg:px-12">
-        <SectionHeader title="Say Hello" subtitle="Let's connect" />
+        <SectionHeader title={t("contact.title")} subtitle={t("contact.subtitle")} />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
           <div className="lg:col-span-7">
             <Reveal>
               <p className="font-body text-base sm:text-lg leading-relaxed text-forest-text-light mb-8">
-                Whether it's about product ideas, AI experiments, film recommendations, or just cat photos — I'd love to hear from you. Drop me a message anytime!
+                {t("contact.desc")}
               </p>
             </Reveal>
 
@@ -585,7 +596,7 @@ function ContactSection() {
                   <Mail size={18} className="text-forest-teal" />
                   <div className="flex-1">
                     <p className="font-body text-sm font-medium text-forest-deep group-hover:text-forest-teal transition-colors">
-                      Email
+                      {t("contact.email")}
                     </p>
                     <p className="font-mono text-[10px] text-forest-text-light/70">
                       haiyunhe2@gmail.com
@@ -620,8 +631,6 @@ function ContactSection() {
               </div>
             </Reveal>
           </div>
-
-
         </div>
       </div>
     </section>
@@ -630,6 +639,7 @@ function ContactSection() {
 
 /* ─── FOOTER ─── */
 function Footer() {
+  const { t } = useLang();
   return (
     <footer className="border-t border-border py-8 sm:py-10">
       <div className="max-w-[1100px] mx-auto px-5 sm:px-8 lg:px-12">
@@ -637,7 +647,7 @@ function Footer() {
           <div className="flex items-center gap-2">
             <TreePine size={15} className="text-forest-teal" />
             <p className="font-display text-sm font-semibold text-forest-deep">
-              Haiyun's Little Forest
+              {t("footer.brand")}
             </p>
           </div>
           <div className="flex items-center gap-5">
