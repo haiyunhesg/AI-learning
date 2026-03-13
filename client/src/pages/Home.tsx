@@ -15,6 +15,7 @@ import {
   MapPin,
   Mail,
   Linkedin,
+  Github,
   ArrowUpRight,
   TreePine,
   Pen,
@@ -661,6 +662,27 @@ function ContactSection() {
                     className="text-forest-text-light/50 group-hover:text-forest-teal group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300"
                   />
                 </a>
+
+                <a
+                  href="https://github.com/haiyunhesg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-4 p-4 border border-border rounded-lg hover:border-forest-teal-light/50 bg-white/40 transition-all duration-300"
+                >
+                  <Github size={18} className="text-forest-teal" />
+                  <div className="flex-1">
+                    <p className="font-body text-sm font-medium text-forest-deep group-hover:text-forest-teal transition-colors">
+                      GitHub
+                    </p>
+                    <p className="font-mono text-[10px] text-forest-text-light/70">
+                      github.com/haiyunhesg
+                    </p>
+                  </div>
+                  <ArrowUpRight
+                    size={14}
+                    className="text-forest-text-light/50 group-hover:text-forest-teal group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300"
+                  />
+                </a>
               </div>
             </Reveal>
           </div>
@@ -691,6 +713,14 @@ function Footer() {
               className="font-mono text-[10px] text-forest-text-light/60 hover:text-forest-teal transition-colors duration-300"
             >
               LinkedIn
+            </a>
+            <a
+              href="https://github.com/haiyunhesg"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-[10px] text-forest-text-light/60 hover:text-forest-teal transition-colors duration-300"
+            >
+              GitHub
             </a>
             <a
               href="mailto:haiyunhe2@gmail.com"
