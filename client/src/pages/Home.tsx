@@ -199,11 +199,11 @@ function AboutSection() {
 
           <div className="lg:col-span-5 lg:mt-4">
             <Reveal direction="right" delay={200}>
-              <div className="relative rounded-2xl overflow-hidden shadow-lg">
+              <div className="relative rounded-2xl overflow-hidden shadow-lg group">
                 <img
                   src={PORTRAIT_IMG}
                   alt="Haiyun in the forest, autumn vibes"
-                  className="w-full aspect-[3/4] object-cover"
+                  className="w-full aspect-[3/4] object-cover transition-transform duration-500 ease-out group-hover:scale-110"
                 />
               </div>
             </Reveal>
@@ -591,6 +591,48 @@ function AIDiarySection() {
         </Reveal>
 
         <Reveal delay={200}>
+          <article className="p-6 sm:p-8 border border-white/10 rounded-lg bg-white/5 backdrop-blur-sm mt-8">
+            {/* Post meta */}
+            <div className="flex items-center gap-3 mb-5">
+              <div className="w-8 h-8 rounded-full bg-forest-teal/20 flex items-center justify-center">
+                <Pen size={14} className="text-forest-teal-light" />
+              </div>
+              <div>
+                <p className="font-body text-xs font-medium text-white/80">Haiyun</p>
+                <p className="font-mono text-[10px] text-white/40 flex items-center gap-1.5">
+                  <Calendar size={10} />
+                  March 22, 2026
+                </p>
+              </div>
+            </div>
+
+            {/* Post title */}
+            <h3 className="font-display text-lg sm:text-xl font-semibold text-white/90 mb-4 leading-snug">
+              {t("diary.post2.title")}
+            </h3>
+
+            {/* Post body */}
+            <div className="space-y-4 font-body text-sm sm:text-base leading-relaxed text-white/70">
+              <p>{t("diary.post2.p1")}</p>
+              <p>{t("diary.post2.p2")}</p>
+              <p>{t("diary.post2.p3")}</p>
+            </div>
+
+            {/* Tags */}
+            <div className="flex flex-wrap gap-2 mt-6 pt-5 border-t border-white/10">
+              {["AI assistants", "personal growth", "learning", "productivity", "gems"].map((tag) => (
+                <span
+                  key={tag}
+                  className="font-mono text-[10px] tracking-wider px-3 py-1 rounded-full border border-white/15 text-white/50"
+                >
+                  #{tag}
+                </span>
+              ))}
+            </div>
+          </article>
+        </Reveal>
+
+        <Reveal delay={300}>
           <p className="font-body text-sm text-white/40 text-center mt-8 italic">
             {t("diary.more")}
           </p>
