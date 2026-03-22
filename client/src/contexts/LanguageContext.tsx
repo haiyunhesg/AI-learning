@@ -40,44 +40,19 @@ const translations: Record<string, Record<Lang, string>> = {
     cn: "Hi\uff01\u6211\u662f\u4f55\u6d77\u97f5\uff0c\u76ee\u524d\u4f4f\u5728\u65b0\u52a0\u5761\u3002\u5e73\u65f6\u6211\u5728 Shopee\uff08\u4e1c\u5357\u4e9a\u6700\u5927\u7684\u7535\u5546\u5e73\u53f0\uff09\u505a\u4ea7\u54c1\u7ecf\u7406\uff0c\u8d1f\u8d23\u77ed\u89c6\u9891\u3001\u76f4\u64ad\u8fd9\u4e9b\u6709\u8da3\u7684\u4e1a\u52a1\uff0c\u7422\u78e8\u600e\u4e48\u8ba9\u5927\u5bb6\u901b\u5f97\u66f4\u5f00\u5fc3\u3001\u4e70\u5f97\u66f4\u723d\uff0c\u540c\u65f6\u786e\u4fdd\u5e73\u53f0\u7684\u5b89\u5168\u3002",
   },
   "about.p2": {
-    en: "My background is a mix of media and tech \u2014 I studied Media and Communication at City University of Hong Kong, which gave me a storyteller's perspective on building products. I care about the \"why\" behind every feature, not just the \"how.\"",
-    cn: "\u6211\u7684\u80cc\u666f\u6709\u5f88\u591a\u5a92\u4f53\u548c\u79d1\u6280\u7684\u878d\u5408\u2014\u2014\u5728\u9999\u6e2f\u57ce\u5e02\u5927\u5b66\u8bfb\u7684\u5a92\u4f53\u4e0e\u4f20\u64ad\uff0c\u8fd9\u8ba9\u6211\u4e60\u60ef\u7528\u8bb2\u6545\u4e8b\u7684\u89c6\u89d2\u53bb\u505a\u4ea7\u54c1\u3002\u6bd4\u8d77\u201c\u600e\u4e48\u505a\u201d\uff0c\u6211\u66f4\u5728\u4e4e\u201c\u4e3a\u4ec0\u4e48\u505a\u201d\u3002",
-  },
-  "about.p3": {
-    en: "Outside of work, I'm diving into AI, learning Japanese on Duolingo (almost 1000 days!), and taking care of my fluffy cat Hazelnut. I believe in staying curious and creating things that bring a little joy to the world.",
-    cn: "\u5de5\u4f5c\u4e4b\u5916\uff0c\u6211\u5728\u7814\u7a76 AI\u3001\u7528\u591a\u90bb\u56fd\u5b66\u65e5\u8bed\uff08\u5feb\u6253\u5361 1000 \u5929\u4e86\uff01\uff09\uff0c\u8fd8\u6709\u4f3a\u5019\u6211\u7684\u6bdb\u7ed2\u7ed2\u732b\u4e3b\u5b50\u699b\u5b9d\u3002\u6211\u89c9\u5f97\u4fdd\u6301\u597d\u5947\u5fc3\u5f88\u91cd\u8981\uff0c\u5e0c\u671b\u80fd\u505a\u4e00\u4e9b\u7ed9\u4e16\u754c\u5e26\u6765\u5c0f\u5c0f\u5feb\u4e50\u7684\u4e8b\u3002",
+    en: "I studied Media and Communication at City University of Hong Kong, which gave me a storyteller's perspective on building products. I care about the \"why\" behind every feature, not just the \"how.\" My background is a mix of media and tech \u2014 from working in the film industry to driving growth in digital platforms. Outside of work, I'm diving into AI, learning Japanese on Duolingo (almost 1000 days!), and taking care of my fluffy cat Hazelnut. I believe in staying curious and creating things that bring a little joy to the world.",
+    cn: "\u6211\u5728\u9999\u6e2f\u57ce\u5e02\u5927\u5b66\u8bfb\u7684\u5a92\u4f53\u4e0e\u4f20\u64ad\uff0c\u8fd9\u8ba9\u6211\u4e60\u60ef\u7528\u8bb2\u6545\u4e8b\u7684\u89c6\u89d2\u53bb\u505a\u4ea7\u54c1\u3002\u6bd4\u8d77\u201c\u600e\u4e48\u505a\u201d\uff0c\u6211\u66f4\u5728\u4e4e\u201c\u4e3a\u4ec0\u4e48\u505a\u201d\u3002\u6211\u7684\u80cc\u666f\u6709\u5f88\u591a\u5a92\u4f53\u548c\u79d1\u6280\u7684\u878d\u5408\u2014\u2014\u4ece\u5f71\u89c6\u884c\u4e1a\u5230\u6570\u5b57\u5e73\u53f0\u7684\u589e\u957f\u3002\u5de5\u4f5c\u4e4b\u5916\uff0c\u6211\u5728\u7814\u7a76 AI\u3001\u7528\u591a\u90bb\u56fd\u5b66\u65e5\u8bed\uff08\u5feb\u6253\u5361 1000 \u5929\u4e86\uff01\uff09\uff0c\u8fd8\u6709\u4f3a\u5019\u6211\u7684\u6bdb\u7ed2\u7ed2\u732b\u4e3b\u5b50\u699b\u5b9d\u3002\u6211\u89c9\u5f97\u4fdd\u6301\u597d\u5947\u5fc3\u5f88\u91cd\u8981\uff0c\u5e0c\u671b\u80fd\u505a\u4e00\u4e9b\u7ed9\u4e16\u754c\u5e26\u6765\u5c0f\u5c0f\u5feb\u4e50\u7684\u4e8b\u3002",
   },
 
-  /* Experience */
-  "exp.title": { en: "What I Do", cn: "\u5de5\u4f5c\u7ecf\u5386" },
-  "exp.shopee.title": { en: "Shopee \u00b7 Singapore", cn: "Shopee \u00b7 \u65b0\u52a0\u5761" },
-  "exp.shopee.role": { en: "Product Management & Operations", cn: "\u4ea7\u54c1\u7ba1\u7406\u4e0e\u8fd0\u8425" },
-  "exp.shopee.desc": {
-    en: "Currently leading Ads safety strategy. Previously drove growth for short video and live streaming. I help millions of users discover products safely through engaging, content-driven shopping experiences across Southeast Asia.",
-    cn: "\u76ee\u524d\u9886\u5bfc\u5e7f\u544a\u5b89\u5168\u7b56\u7565\u3002\u4e4b\u524d\u9a71\u52a8\u77ed\u89c6\u9891\u548c\u76f4\u64ad\u7684\u589e\u957f\u3002\u5e2e\u52a9\u6570\u767e\u4e07\u7528\u6237\u901a\u8fc7\u5b89\u5168\u3001\u6709\u8da3\u7684\u5185\u5bb9\u53d1\u73b0\u4e1c\u5357\u4e9a\u7684\u597d\u7269\u3002",
-  },
-  "exp.prev.title": { en: "Previous Experience", cn: "\u8fc7\u5f80\u7ecf\u5386" },
-  "exp.prev.role": { en: "Product & Content Operations", cn: "\u4ea7\u54c1\u4e0e\u5185\u5bb9\u8fd0\u8425" },
-  "exp.prev.desc": {
-    en: "Built my foundation across digital media, content strategy, and user engagement. Also spent time in the film industry \u2014 a chapter I'm still proud of!",
-    cn: "\u5728\u6570\u5b57\u5a92\u4f53\u3001\u5185\u5bb9\u7b56\u7565\u548c\u7528\u6237\u589e\u957f\u65b9\u9762\u6253\u4e0b\u4e86\u57fa\u7840\u3002\u8fd8\u5728\u5f71\u89c6\u884c\u4e1a\u5f85\u8fc7\u4e00\u6bb5\u65f6\u95f4\u2014\u2014\u90a3\u662f\u6211\u81f3\u4eca\u5f15\u4ee5\u4e3a\u8c6a\u7684\u4e00\u6bb5\u7ecf\u5386\uff01",
-  },
-
-  /* Education */
-  "edu.title": { en: "Where I Studied", cn: "\u6559\u80b2\u80cc\u666f" },
-  "edu.school": { en: "City University of Hong Kong", cn: "\u9999\u6e2f\u57ce\u5e02\u5927\u5b66" },
-  "edu.dept": { en: "Department of Media and Communication", cn: "\u5a92\u4f53\u4e0e\u4f20\u64ad\u7cfb" },
-  "edu.desc": {
-    en: "This is where I fell in love with storytelling and learned how media shapes the way we see the world. It taught me to think about products as narratives \u2014 every feature tells a story to the user.",
-    cn: "\u5728\u8fd9\u91cc\u6211\u7231\u4e0a\u4e86\u8bb2\u6545\u4e8b\uff0c\u4e5f\u5b66\u4f1a\u4e86\u5a92\u4f53\u5982\u4f55\u5851\u9020\u6211\u4eec\u770b\u4e16\u754c\u7684\u65b9\u5f0f\u3002\u5b83\u6559\u4f1a\u6211\u628a\u4ea7\u54c1\u5f53\u4f5c\u53d9\u4e8b\u6765\u601d\u8003\u2014\u2014\u6bcf\u4e2a\u529f\u80fd\u90fd\u5728\u5411\u7528\u6237\u8bb2\u8ff0\u4e00\u4e2a\u6545\u4e8b\u3002",
-  },
-
-  /* Skills */
-  "skills.title": { en: "Things I'm Good At", cn: "\u64c5\u957f\u7684\u4e8b" },
+  /* Experience & Skills */
+  "exp.title": { en: "What I Do & Things I'm Good At", cn: "\u6211\u7684\u4e1a\u52a1" },
 
   /* Fun Facts */
   "ff.title": { en: "Fun Facts", cn: "\u51b7\u77e5\u8bc6" },
   "ff.subtitle": { en: "Some random things about me", cn: "\u5173\u4e8e\u6211\u7684\u4e00\u4e9b\u968f\u673a\u5c0f\u4e8b" },
+
+  /* Skills - Moved to merged section */
+  "skills.title": { en: "Things I'm Good At", cn: "\u64c5\u957f\u7684\u4e8b" },
   "ff.duo.title_prefix": { en: "Duolingo", cn: "\u591a\u90bb\u56fd" },
   "ff.duo.title_suffix": { en: "1000-Day Streak", cn: "1000 \u5929\u8fde\u80dc" },
   "ff.duo.desc": {

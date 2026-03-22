@@ -186,13 +186,8 @@ function AboutSection() {
               </p>
             </Reveal>
             <Reveal delay={150}>
-              <p className="font-body text-base sm:text-lg leading-relaxed text-forest-text-light mb-5">
-                {t("about.p2")}
-              </p>
-            </Reveal>
-            <Reveal delay={300}>
               <p className="font-body text-base sm:text-lg leading-relaxed text-forest-text-light">
-                {t("about.p3")}
+                {t("about.p2")}
               </p>
             </Reveal>
           </div>
@@ -210,7 +205,7 @@ function AboutSection() {
           </div>
         </div>
 
-        {/* Experience */}
+        {/* What I Do & Things I'm Good At */}
         <Reveal>
           <div className="mb-14 sm:mb-20">
             <div className="flex items-center gap-3 mb-6">
@@ -220,62 +215,20 @@ function AboutSection() {
               </h3>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              <Reveal delay={100}>
-                <div className="p-5 sm:p-6 border border-border rounded-lg bg-forest-cream/50 hover:border-forest-teal-light/50 transition-colors duration-300">
-                  <h4 className="font-body text-sm font-semibold text-forest-deep mb-2">
-                    {t("exp.shopee.title")}
-                  </h4>
-                  <p className="font-mono text-[10px] tracking-wider text-forest-text-light/70 uppercase mb-3">
-                    {t("exp.shopee.role")}
-                  </p>
-                  <p className="font-body text-sm leading-relaxed text-forest-text-light">
-                    {t("exp.shopee.desc")}
-                  </p>
-                </div>
-              </Reveal>
-              <Reveal delay={200}>
-                <div className="p-5 sm:p-6 border border-border rounded-lg bg-forest-cream/50 hover:border-forest-teal-light/50 transition-colors duration-300">
-                  <h4 className="font-body text-sm font-semibold text-forest-deep mb-2">
-                    {t("exp.prev.title")}
-                  </h4>
-                  <p className="font-mono text-[10px] tracking-wider text-forest-text-light/70 uppercase mb-3">
-                    {t("exp.prev.role")}
-                  </p>
-                  <p className="font-body text-sm leading-relaxed text-forest-text-light">
-                    {t("exp.prev.desc")}
-                  </p>
-                </div>
-              </Reveal>
-            </div>
-          </div>
-        </Reveal>
-
-        {/* Education */}
-        <Reveal>
-          <div className="mb-14 sm:mb-20">
-            <div className="flex items-center gap-3 mb-6">
-              <GraduationCap size={18} className="text-forest-teal" />
-              <h3 className="font-display text-xl sm:text-2xl font-semibold text-forest-deep">
-                {t("edu.title")}
-              </h3>
-            </div>
-
-            <div className="p-5 sm:p-6 border border-border rounded-lg bg-forest-cream/50">
-              <h4 className="font-body text-base font-semibold text-forest-deep mb-1">
-                {t("edu.school")}
+            <div className="p-5 sm:p-6 border border-border rounded-lg bg-forest-cream/50 mb-8">
+              <h4 className="font-body text-base font-semibold text-forest-deep mb-2">
+                {t("exp.shopee.title")}
               </h4>
-              <p className="font-body text-sm text-forest-teal mb-3">
-                {t("edu.dept")}
+              <p className="font-mono text-[10px] tracking-wider text-forest-text-light/70 uppercase mb-3">
+                {t("exp.shopee.role")}
               </p>
               <p className="font-body text-sm leading-relaxed text-forest-text-light">
-                {t("edu.desc")}
+                {t("exp.shopee.desc")}
               </p>
             </div>
           </div>
         </Reveal>
 
-        {/* Skills */}
         <Reveal>
           <div>
             <div className="flex items-center gap-3 mb-6">
