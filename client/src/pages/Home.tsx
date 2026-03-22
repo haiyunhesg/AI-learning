@@ -205,51 +205,7 @@ function AboutSection() {
           </div>
         </div>
 
-        {/* What I Do & Things I'm Good At */}
-        <Reveal>
-          <div className="mb-14 sm:mb-20">
-            <div className="flex items-center gap-3 mb-6">
-              <Briefcase size={18} className="text-forest-teal" />
-              <h3 className="font-display text-xl sm:text-2xl font-semibold text-forest-deep">
-                {t("exp.title")}
-              </h3>
-            </div>
 
-            <div className="p-5 sm:p-6 border border-border rounded-lg bg-forest-cream/50 mb-8">
-              <h4 className="font-body text-base font-semibold text-forest-deep mb-2">
-                {t("exp.shopee.title")}
-              </h4>
-              <p className="font-mono text-[10px] tracking-wider text-forest-text-light/70 uppercase mb-3">
-                {t("exp.shopee.role")}
-              </p>
-              <p className="font-body text-sm leading-relaxed text-forest-text-light">
-                {t("exp.shopee.desc")}
-              </p>
-            </div>
-          </div>
-        </Reveal>
-
-        <Reveal>
-          <div>
-            <div className="flex items-center gap-3 mb-6">
-              <Sparkles size={18} className="text-forest-teal" />
-              <h3 className="font-display text-xl sm:text-2xl font-semibold text-forest-deep">
-                {t("skills.title")}
-              </h3>
-            </div>
-
-            <div className="flex flex-wrap gap-2.5">
-              {skillKeys.map((key) => (
-                <span
-                  key={key}
-                  className="font-mono text-[11px] tracking-wide px-3.5 py-1.5 border border-border rounded-full text-forest-text-light hover:border-forest-teal-light hover:text-forest-teal transition-all duration-300 bg-white/40"
-                >
-                  {t(key)}
-                </span>
-              ))}
-            </div>
-          </div>
-        </Reveal>
       </div>
     </section>
   );
