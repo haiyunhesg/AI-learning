@@ -77,8 +77,8 @@ function HeroSection() {
   const { t, lang } = useLang();
   return (
     <section className="relative min-h-screen flex items-end pb-16 sm:pb-24 overflow-hidden">
-      <div className="absolute inset-0">
-        <img src={HERO_IMG} alt="" className="w-full h-full object-cover" />
+      <div className="absolute inset-0 hero-animated-bg">
+        <img src={HERO_IMG} alt="" className="w-full h-full object-cover leaf-sway" />
         <div className="absolute inset-0 bg-gradient-to-t from-forest-mist via-forest-mist/60 to-forest-mist/20" />
       </div>
 
@@ -538,7 +538,7 @@ function AIDiarySection() {
   const { t } = useLang();
   return (
     <section id="diary" className="py-16 sm:py-24 relative">
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 ocean-animated">
         <img src={OCEAN_IMG} alt="" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-forest-deep/85" />
       </div>
@@ -548,6 +548,53 @@ function AIDiarySection() {
 
         <Reveal>
           <article className="p-6 sm:p-8 border border-white/10 rounded-lg bg-white/5 backdrop-blur-sm">
+            {/* Post meta */}
+            <div className="flex items-center gap-3 mb-5">
+              <div className="w-8 h-8 rounded-full bg-forest-teal/20 flex items-center justify-center">
+                <Pen size={14} className="text-forest-teal-light" />
+              </div>
+              <div>
+                <p className="font-body text-xs font-medium text-white/80">Haiyun</p>
+                <p className="font-mono text-[10px] text-white/40 flex items-center gap-1.5">
+                  <Calendar size={10} />
+                  March 22, 2026
+                </p>
+              </div>
+            </div>
+
+            {/* Post title */}
+            <h3 className="font-display text-lg sm:text-xl font-semibold text-white/90 mb-4 leading-snug">
+              {t("diary.post2.title")}
+            </h3>
+
+            {/* Post body */}
+            <div className="space-y-4 font-body text-sm sm:text-base leading-relaxed text-white/70">
+              <p>{t("diary.post2.p1")}</p>
+              <p>{t("diary.post2.p2a")}</p>
+              <p>{t("diary.post2.p2b")}</p>
+              <p>{t("diary.post2.p2c")}</p>
+              <p>{t("diary.post2.p2d")}</p>
+              <p>{t("diary.post2.p2e")}</p>
+              <p>{t("diary.post2.p2f")}</p>
+              <p>{t("diary.post2.p3")}</p>
+            </div>
+
+            {/* Tags */}
+            <div className="flex flex-wrap gap-2 mt-6 pt-5 border-t border-white/10">
+              {["AI assistants", "personal growth", "learning", "productivity", "gems"].map((tag) => (
+                <span
+                  key={tag}
+                  className="font-mono text-[10px] tracking-wider px-3 py-1 rounded-full border border-white/15 text-white/50"
+                >
+                  #{tag}
+                </span>
+              ))}
+            </div>
+          </article>
+        </Reveal>
+
+        <Reveal delay={200}>
+          <article className="p-6 sm:p-8 border border-white/10 rounded-lg bg-white/5 backdrop-blur-sm mt-8">
             {/* Post meta */}
             <div className="flex items-center gap-3 mb-5">
               <div className="w-8 h-8 rounded-full bg-forest-teal/20 flex items-center justify-center">
@@ -579,48 +626,6 @@ function AIDiarySection() {
             {/* Tags */}
             <div className="flex flex-wrap gap-2 mt-6 pt-5 border-t border-white/10">
               {["AI", "Manus", "creativity", "personal website", "first post"].map((tag) => (
-                <span
-                  key={tag}
-                  className="font-mono text-[10px] tracking-wider px-3 py-1 rounded-full border border-white/15 text-white/50"
-                >
-                  #{tag}
-                </span>
-              ))}
-            </div>
-          </article>
-        </Reveal>
-
-        <Reveal delay={200}>
-          <article className="p-6 sm:p-8 border border-white/10 rounded-lg bg-white/5 backdrop-blur-sm mt-8">
-            {/* Post meta */}
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-8 h-8 rounded-full bg-forest-teal/20 flex items-center justify-center">
-                <Pen size={14} className="text-forest-teal-light" />
-              </div>
-              <div>
-                <p className="font-body text-xs font-medium text-white/80">Haiyun</p>
-                <p className="font-mono text-[10px] text-white/40 flex items-center gap-1.5">
-                  <Calendar size={10} />
-                  March 22, 2026
-                </p>
-              </div>
-            </div>
-
-            {/* Post title */}
-            <h3 className="font-display text-lg sm:text-xl font-semibold text-white/90 mb-4 leading-snug">
-              {t("diary.post2.title")}
-            </h3>
-
-            {/* Post body */}
-            <div className="space-y-4 font-body text-sm sm:text-base leading-relaxed text-white/70">
-              <p>{t("diary.post2.p1")}</p>
-              <p>{t("diary.post2.p2")}</p>
-              <p>{t("diary.post2.p3")}</p>
-            </div>
-
-            {/* Tags */}
-            <div className="flex flex-wrap gap-2 mt-6 pt-5 border-t border-white/10">
-              {["AI assistants", "personal growth", "learning", "productivity", "gems"].map((tag) => (
                 <span
                   key={tag}
                   className="font-mono text-[10px] tracking-wider px-3 py-1 rounded-full border border-white/15 text-white/50"

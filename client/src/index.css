@@ -190,3 +190,113 @@
     z-index: 1;
   }
 }
+
+/* ─── ANIMATIONS ─── */
+
+/* Hero section background animations */
+@keyframes water-flow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes leaf-sway {
+  0%, 100% {
+    transform: translateX(0) rotateZ(0deg);
+    opacity: 0.6;
+  }
+  25% {
+    transform: translateX(8px) rotateZ(2deg);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateX(0) rotateZ(0deg);
+    opacity: 0.6;
+  }
+  75% {
+    transform: translateX(-8px) rotateZ(-2deg);
+    opacity: 0.7;
+  }
+}
+
+@keyframes floating-leaf {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(100vh) translateX(50px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes ocean-tide {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Hero background animation */
+.hero-animated-bg {
+  animation: water-flow 8s ease-in-out infinite;
+  background-size: 200% 200%;
+}
+
+/* Leaf sway animation for hero */
+.leaf-sway {
+  animation: leaf-sway 4s ease-in-out infinite;
+}
+
+/* Floating leaves in white sections */
+.floating-leaf {
+  position: fixed;
+  pointer-events: none;
+  animation: floating-leaf 12s linear infinite;
+  font-size: 1.5rem;
+  opacity: 0.5;
+  z-index: 0;
+}
+
+/* Ocean tide animation */
+.ocean-animated {
+  animation: ocean-tide 6s ease-in-out infinite;
+  background-size: 200% 200%;
+}
+
+/* Leaf particle generator for white sections */
+.leaf-particles {
+  position: relative;
+  overflow: hidden;
+}
+
+.leaf-particles::before {
+  content: "🍃";
+  position: absolute;
+  left: 10%;
+  top: -20px;
+  animation: floating-leaf 10s linear infinite;
+  opacity: 0.4;
+  font-size: 1.2rem;
+}
+
+.leaf-particles::after {
+  content: "🍂";
+  position: absolute;
+  left: 30%;
+  top: -40px;
+  animation: floating-leaf 12s linear infinite 2s;
+  opacity: 0.3;
+  font-size: 1rem;
+}
