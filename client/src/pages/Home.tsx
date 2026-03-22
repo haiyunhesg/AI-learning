@@ -77,8 +77,8 @@ function HeroSection() {
   const { t, lang } = useLang();
   return (
     <section className="relative min-h-screen flex items-end pb-16 sm:pb-24 overflow-hidden">
-      <div className="absolute inset-0 hero-animated-bg">
-        <img src={HERO_IMG} alt="" className="w-full h-full object-cover leaf-sway" />
+      <div className="absolute inset-0">
+        <img src={HERO_IMG} alt="" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-forest-mist via-forest-mist/60 to-forest-mist/20" />
       </div>
 
