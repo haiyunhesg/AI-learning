@@ -576,6 +576,7 @@ function AIDiarySection() {
               <p>{t("diary.post2.p2d")}</p>
               <p>{t("diary.post2.p2e")}</p>
               <p>{t("diary.post2.p2f")}</p>
+              <p>{t("diary.post2.p3")}</p>
             </div>
 
             {/* Tags */}
