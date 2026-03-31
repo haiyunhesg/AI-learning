@@ -39,9 +39,12 @@ const HAZELNUT_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5
 const HAZELNUT_FLOOR_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/hazelnut-floor_ea717f57.jpg";
 const HAZELNUT_LADDER_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/hazelnut-ladder_e176554f.jpg";
 
-/* ─── New Generated Illustrations ─── */
-const FREEDOM_IMG = "/freedom-dreamer.png";
+/* ─── New Generated Unified Illustrations ─── */
+const DUO_IMG = "/duolingo-study.png";
+const WEB_IMG = "/website-survivor.png";
 const FILM_IMG = "/film-industry.png";
+const FREEDOM_IMG = "/freedom-dreamer.png";
+const MUSIC_IMG = "/hidden-vocalist.png";
 
 /* ─── Reveal wrapper ─── */
 function Reveal({
@@ -211,13 +214,13 @@ function FunFactsSection() {
       emoji: "🦉",
       title: `${t("ff.duo.title_prefix")} ${streakDays}${t("ff.duo.title_suffix")}`,
       description: t("ff.duo.desc"),
-      image: GARDEN_IMG,
+      image: DUO_IMG,
     },
     {
       emoji: "🌐",
       title: t("ff.web.title"),
       description: t("ff.web.desc"),
-      image: MEADOW_IMG,
+      image: WEB_IMG,
     },
     {
       emoji: "🎬",
@@ -235,7 +238,7 @@ function FunFactsSection() {
       emoji: "🎵",
       title: t("ff.music.title"),
       description: t("ff.music.desc"),
-      image: OCEAN_IMG,
+      image: MUSIC_IMG,
       hasLinks: true,
     },
     {
