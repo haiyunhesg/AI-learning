@@ -39,6 +39,10 @@ const HAZELNUT_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5
 const HAZELNUT_FLOOR_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/hazelnut-floor_ea717f57.jpg";
 const HAZELNUT_LADDER_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/hazelnut-ladder_e176554f.jpg";
 
+/* ─── New Generated Illustrations ─── */
+const FREEDOM_IMG = "/freedom-dreamer.png";
+const FILM_IMG = "/film-industry.png";
+
 /* ─── Reveal wrapper ─── */
 function Reveal({
   children,
@@ -151,33 +155,13 @@ function HeroSection() {
   );
 }
 
-/* ─── ABOUT (includes experience, education, skills) ─── */
+/* ─── ABOUT ─── */
 function AboutSection() {
-  const { t, lang } = useLang();
-
-  const skillKeys = [
-    "skill.product_strategy",
-    "skill.short_video",
-    "skill.live_streaming",
-    "skill.ecommerce",
-    "skill.content_monetization",
-    "skill.user_growth",
-    "skill.ab_testing",
-    "skill.data_analysis",
-    "skill.cross_functional",
-    "skill.storytelling",
-    "skill.creator_ecosystems",
-    "skill.sea_markets",
-    "skill.agile",
-    "skill.localization",
-    "skill.ai_tools",
-  ];
-
+  const { t } = useLang();
   return (
     <section id="about" className="py-16 sm:py-24">
       <div className="max-w-[1100px] mx-auto px-5 sm:px-8 lg:px-12">
         <SectionHeader title={t("about.title")} subtitle={t("about.subtitle")} />
-
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start mb-16 sm:mb-24">
           <div className="lg:col-span-7">
             <Reveal>
@@ -191,21 +175,18 @@ function AboutSection() {
               </p>
             </Reveal>
           </div>
-
           <div className="lg:col-span-5 lg:mt-4">
             <Reveal direction="right" delay={200}>
               <div className="relative rounded-2xl overflow-hidden shadow-lg group">
                 <img
                   src={PORTRAIT_IMG}
-                  alt="Haiyun in the forest, autumn vibes"
+                  alt="Haiyun in the forest"
                   className="w-full aspect-[3/4] object-cover transition-transform duration-500 ease-out group-hover:scale-110"
                 />
               </div>
             </Reveal>
           </div>
         </div>
-
-
       </div>
     </section>
   );
@@ -214,6 +195,7 @@ function AboutSection() {
 /* ─── FUN FACTS ─── */
 function FunFactsSection() {
   const { t, lang } = useLang();
+  const [activeCard, setActiveCard] = useState<number | null>(null);
 
   const streakDays = useMemo(() => {
     const baseDate = new Date("2026-03-12");
@@ -226,42 +208,48 @@ function FunFactsSection() {
 
   const facts = [
     {
-      emoji: "\u{1F989}",
+      emoji: "🦉",
       title: `${t("ff.duo.title_prefix")} ${streakDays}${t("ff.duo.title_suffix")}`,
-      description: t("ff.duo.desc").replace("{days}", String(streakDays)),
+      description: t("ff.duo.desc"),
+      image: GARDEN_IMG,
     },
     {
-      emoji: "\u{1F310}",
+      emoji: "🌐",
       title: t("ff.web.title"),
       description: t("ff.web.desc"),
+      image: MEADOW_IMG,
     },
     {
-      emoji: "\u{1F3AC}",
+      emoji: "🎬",
       title: t("ff.film.title"),
       description: t("ff.film.desc"),
+      image: FILM_IMG,
     },
     {
-      emoji: "\u{2728}",
+      emoji: "✨",
       title: t("ff.wish.title"),
       description: t("ff.wish.desc"),
+      image: FREEDOM_IMG,
     },
     {
-      emoji: "\u{1F3B5}",
+      emoji: "🎵",
       title: t("ff.music.title"),
       description: t("ff.music.desc"),
+      image: OCEAN_IMG,
       hasLinks: true,
     },
     {
-      emoji: "\u{1F431}",
+      emoji: "🐱",
       title: t("ff.cat.title"),
       description: t("ff.cat.desc"),
+      image: HAZELNUT_IMG,
     },
   ];
 
   const catPhotos = [
-    { src: HAZELNUT_IMG, alt: "Hazelnut with a toy on wood floor", caption: t("ff.photo1") },
-    { src: HAZELNUT_FLOOR_IMG, alt: "Hazelnut lying on the floor looking back", caption: t("ff.photo2") },
-    { src: HAZELNUT_LADDER_IMG, alt: "Hazelnut sitting on a ladder looking up", caption: t("ff.photo3") },
+    { src: HAZELNUT_IMG, alt: "Hazelnut 1", caption: t("ff.photo1") },
+    { src: HAZELNUT_FLOOR_IMG, alt: "Hazelnut 2", caption: t("ff.photo2") },
+    { src: HAZELNUT_LADDER_IMG, alt: "Hazelnut 3", caption: t("ff.photo3") },
   ];
 
   return (
@@ -273,54 +261,89 @@ function FunFactsSection() {
       <div className="relative z-10 max-w-[1100px] mx-auto px-5 sm:px-8 lg:px-12">
         <SectionHeader title={t("ff.title")} subtitle={t("ff.subtitle")} />
 
-        {/* Fun facts cards in a 2-column grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+        {/* Illustration Card Box - Fixed size for both states */}
+        <div className="max-w-2xl mx-auto mb-16">
+          <Reveal>
+            <div className="relative aspect-[4/3] w-full border-2 border-dashed border-forest-teal/20 rounded-2xl overflow-hidden bg-white/40 backdrop-blur-sm shadow-sm group">
+              {activeCard === null ? (
+                <div 
+                  className="absolute inset-0 flex flex-col items-center justify-center cursor-pointer hover:bg-forest-teal/5 transition-colors duration-300"
+                  onClick={() => setActiveCard(Math.floor(Math.random() * facts.length))}
+                >
+                  <div className="w-16 h-16 rounded-full bg-forest-mist flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <Sparkles className="text-forest-teal" size={24} />
+                  </div>
+                  <p className="font-mono text-[11px] tracking-[0.2em] uppercase text-forest-teal font-bold">
+                    Draw a card to see the illustration
+                  </p>
+                </div>
+              ) : (
+                <div className="absolute inset-0 flex flex-col">
+                  <div className="relative flex-1 overflow-hidden">
+                    <img 
+                      src={facts[activeCard].image} 
+                      alt="" 
+                      className="w-full h-full object-cover animate-in fade-in zoom-in duration-700"
+                    />
+                    <div className="absolute top-4 left-4 w-10 h-10 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-xl shadow-sm">
+                      {facts[activeCard].emoji}
+                    </div>
+                    <button 
+                      onClick={() => setActiveCard(null)}
+                      className="absolute top-4 right-4 px-3 py-1 bg-white/90 backdrop-blur-md rounded-full text-[10px] font-mono tracking-widest uppercase text-forest-deep hover:bg-forest-teal hover:text-white transition-all shadow-sm"
+                    >
+                      Reset
+                    </button>
+                  </div>
+                  <div className="p-6 bg-white/80 backdrop-blur-md">
+                    <h3 className="font-display text-xl font-semibold text-forest-deep mb-2">
+                      {facts[activeCard].title}
+                    </h3>
+                    <p className="font-body text-sm text-forest-text-light leading-relaxed">
+                      {facts[activeCard].description}
+                    </p>
+                    {facts[activeCard].hasLinks && (
+                      <div className="flex gap-3 mt-4">
+                        <a href="https://open.spotify.com/playlist/6J8KKxI8NRnZ6rUPpE8Jvv" target="_blank" className="text-[10px] font-mono uppercase text-forest-teal hover:underline">Playlist</a>
+                        <a href="https://open.spotify.com/track/3pUIhxyUFzuhRAFEJqtees" target="_blank" className="text-[10px] font-mono uppercase text-forest-teal hover:underline">Track</a>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
+          </Reveal>
+        </div>
+
+        {/* Facts Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
           {facts.map((fact, i) => (
             <Reveal key={i} delay={i * 80}>
-              <div className="group flex gap-4 p-5 sm:p-6 border border-border rounded-lg bg-white/60 backdrop-blur-sm hover:bg-white/80 hover:border-forest-teal-light/40 transition-all duration-400 h-full">
-                <div className="shrink-0 w-10 h-10 rounded-full bg-forest-mist flex items-center justify-center text-lg">
-                  {fact.emoji}
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-body text-sm sm:text-base font-semibold text-forest-deep mb-1.5 group-hover:text-forest-teal transition-colors">
+              <div 
+                className={`group p-6 border rounded-xl bg-white/60 backdrop-blur-sm hover:bg-white/80 transition-all duration-400 cursor-pointer h-full ${activeCard === i ? 'border-forest-teal ring-1 ring-forest-teal' : 'border-border'}`}
+                onClick={() => setActiveCard(i)}
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-full bg-forest-mist flex items-center justify-center text-lg">
+                    {fact.emoji}
+                  </div>
+                  <h3 className="font-body text-sm font-semibold text-forest-deep group-hover:text-forest-teal transition-colors">
                     {fact.title}
                   </h3>
-                  <p className="font-body text-sm leading-relaxed text-forest-text-light">
-                    {fact.description}
-                  </p>
-                  {(fact as any).hasLinks && (
-                    <div className="flex flex-wrap gap-3 mt-3">
-                      <a
-                        href="https://open.spotify.com/playlist/6J8KKxI8NRnZ6rUPpE8Jvv?si=8c7c08310e6a4bd0"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-body rounded-full border border-forest-teal-light/30 text-forest-teal hover:bg-forest-teal/10 transition-colors duration-300"
-                      >
-                        <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
-                        {t("ff.music.playlist")}
-                      </a>
-                      <a
-                        href="https://open.spotify.com/track/3pUIhxyUFzuhRAFEJqtees?si=c400d443716e4a22"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-body rounded-full border border-forest-teal-light/30 text-forest-teal hover:bg-forest-teal/10 transition-colors duration-300"
-                      >
-                        <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
-                        {t("ff.music.song")}
-                      </a>
-                    </div>
-                  )}
                 </div>
+                <p className="font-body text-xs leading-relaxed text-forest-text-light line-clamp-2">
+                  {fact.description}
+                </p>
               </div>
             </Reveal>
           ))}
         </div>
 
-        {/* Hazelnut photo gallery — 3 portrait photos */}
-        <Reveal delay={facts.length * 80}>
+        {/* Gallery */}
+        <Reveal delay={400}>
           <div className="mt-2">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="text-lg">{"\u{1F431}"}</span>
+            <div className="flex items-center gap-2 mb-6">
+              <span className="text-lg">🐱</span>
               <h3 className="font-display text-lg sm:text-xl font-semibold text-forest-deep">
                 {t("ff.gallery.title")}
               </h3>
@@ -379,7 +402,6 @@ function CommentSection() {
         </h3>
       </div>
 
-      {/* Comment form */}
       <form onSubmit={handleSubmit} className="mb-6 p-4 sm:p-5 border border-white/10 rounded-lg bg-white/5 backdrop-blur-sm">
         <div className="flex flex-col sm:flex-row gap-3 mb-3">
           <input
@@ -387,7 +409,6 @@ function CommentSection() {
             value={nickname}
             onChange={(e) => setNickname(e.target.value)}
             placeholder={t("comments.name")}
-            maxLength={100}
             className="flex-1 sm:max-w-[200px] px-3 py-2 bg-white/10 border border-white/15 rounded-md text-sm text-white/90 placeholder:text-white/30 focus:outline-none focus:border-forest-teal-light/50 font-body"
           />
         </div>
@@ -395,7 +416,6 @@ function CommentSection() {
           value={content}
           onChange={(e) => setContent(e.target.value)}
           placeholder={t("comments.placeholder")}
-          maxLength={2000}
           rows={3}
           className="w-full px-3 py-2 bg-white/10 border border-white/15 rounded-md text-sm text-white/90 placeholder:text-white/30 focus:outline-none focus:border-forest-teal-light/50 resize-none font-body mb-3"
         />
@@ -409,7 +429,6 @@ function CommentSection() {
         </button>
       </form>
 
-      {/* Comments list */}
       {isLoading ? (
         <p className="text-sm text-white/40 italic font-body">{t("comments.loading")}</p>
       ) : comments && comments.length > 0 ? (
@@ -447,7 +466,7 @@ function AIDiarySection() {
   const { t } = useLang();
   return (
     <section id="diary" className="py-16 sm:py-24 relative">
-      <div className="absolute inset-0 ocean-animated">
+      <div className="absolute inset-0">
         <img src={OCEAN_IMG} alt="" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-forest-deep/85" />
       </div>
@@ -457,7 +476,6 @@ function AIDiarySection() {
 
         <Reveal>
           <article className="p-6 sm:p-8 border border-white/10 rounded-lg bg-white/5 backdrop-blur-sm">
-            {/* Post meta */}
             <div className="flex items-center gap-3 mb-5">
               <div className="w-8 h-8 rounded-full bg-forest-teal/20 flex items-center justify-center">
                 <Pen size={14} className="text-forest-teal-light" />
@@ -471,88 +489,23 @@ function AIDiarySection() {
               </div>
             </div>
 
-            {/* Post title */}
             <h3 className="font-display text-lg sm:text-xl font-semibold text-white/90 mb-4 leading-snug">
-              {t("diary.post2.title")}
+              {t("diary.post1.title")}
             </h3>
 
-            {/* Post body */}
             <div className="space-y-4 font-body text-sm sm:text-base leading-relaxed text-white/70">
-              <p>{t("diary.post2.p1")}</p>
-              <p>{t("diary.post2.p2a")}</p>
-              <p>{t("diary.post2.p2b")}</p>
-              <p>{t("diary.post2.p2c")}</p>
-              <p>{t("diary.post2.p2d")}</p>
-              <p>{t("diary.post2.p2e")}</p>
-              <p>{t("diary.post2.p2f")}</p>
-              <p>{t("diary.post2.p3")}</p>
-            </div>
-
-            {/* Tags */}
-            <div className="flex flex-wrap gap-2 mt-6 pt-5 border-t border-white/10">
-              {["AI assistants", "personal growth", "learning", "productivity", "gems"].map((tag) => (
-                <span
-                  key={tag}
-                  className="font-mono text-[10px] tracking-wider px-3 py-1 rounded-full border border-white/15 text-white/50"
-                >
-                  #{tag}
-                </span>
-              ))}
+              <p>{t("diary.post1.p1")}</p>
+              <p>{t("diary.post1.p2")}</p>
             </div>
           </article>
         </Reveal>
 
         <Reveal delay={200}>
-          <article className="p-6 sm:p-8 border border-white/10 rounded-lg bg-white/5 backdrop-blur-sm mt-8">
-            {/* Post meta */}
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-8 h-8 rounded-full bg-forest-teal/20 flex items-center justify-center">
-                <Pen size={14} className="text-forest-teal-light" />
-              </div>
-              <div>
-                <p className="font-body text-xs font-medium text-white/80">Haiyun</p>
-                <p className="font-mono text-[10px] text-white/40 flex items-center gap-1.5">
-                  <Calendar size={10} />
-                  March 12, 2026
-                </p>
-              </div>
-            </div>
-
-            {/* Post title */}
-            <h3 className="font-display text-lg sm:text-xl font-semibold text-white/90 mb-4 leading-snug">
-              {t("diary.post1.title")}
-            </h3>
-
-            {/* Post body */}
-            <div className="space-y-4 font-body text-sm sm:text-base leading-relaxed text-white/70">
-              <p>{t("diary.post1.p1")}</p>
-              <p>{t("diary.post1.p2")}</p>
-              <p>{t("diary.post1.p3")}</p>
-              <p>{t("diary.post1.p4")}</p>
-              <p>{t("diary.post1.p5")}</p>
-            </div>
-
-            {/* Tags */}
-            <div className="flex flex-wrap gap-2 mt-6 pt-5 border-t border-white/10">
-              {["AI", "Manus", "creativity", "personal website", "first post"].map((tag) => (
-                <span
-                  key={tag}
-                  className="font-mono text-[10px] tracking-wider px-3 py-1 rounded-full border border-white/15 text-white/50"
-                >
-                  #{tag}
-                </span>
-              ))}
-            </div>
-          </article>
-        </Reveal>
-
-        <Reveal delay={300}>
           <p className="font-body text-sm text-white/40 text-center mt-8 italic">
             {t("diary.more")}
           </p>
         </Reveal>
 
-        {/* Comment Section */}
         <Reveal delay={300}>
           <CommentSection />
         </Reveal>
@@ -568,76 +521,39 @@ function ContactSection() {
     <section id="contact" className="py-16 sm:py-24">
       <div className="max-w-[1100px] mx-auto px-5 sm:px-8 lg:px-12">
         <SectionHeader title={t("contact.title")} subtitle={t("contact.subtitle")} />
-
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
           <div className="lg:col-span-7">
             <Reveal>
               <p className="font-body text-base sm:text-lg leading-relaxed text-forest-text-light mb-8">
-                {t("contact.desc")}
+                I'm always open to interesting conversations, collaboration opportunities, or just a friendly 'hello'. Feel free to reach out through any of these channels:
               </p>
             </Reveal>
 
             <Reveal delay={150}>
               <div className="space-y-3">
-                <a
-                  href="mailto:haiyunhe2@gmail.com"
-                  className="group flex items-center gap-4 p-4 border border-border rounded-lg hover:border-forest-teal-light/50 bg-white/40 transition-all duration-300"
-                >
+                <a href="mailto:haiyunhe2@gmail.com" className="group flex items-center gap-4 p-4 border border-border rounded-lg hover:border-forest-teal-light/50 bg-white/40 transition-all duration-300">
                   <Mail size={18} className="text-forest-teal" />
                   <div className="flex-1">
-                    <p className="font-body text-sm font-medium text-forest-deep group-hover:text-forest-teal transition-colors">
-                      {t("contact.email")}
-                    </p>
-                    <p className="font-mono text-[10px] text-forest-text-light/70">
-                      haiyunhe2@gmail.com
-                    </p>
+                    <p className="font-body text-sm font-medium text-forest-deep group-hover:text-forest-teal transition-colors">Email</p>
+                    <p className="font-mono text-[10px] text-forest-text-light/70">haiyunhe2@gmail.com</p>
                   </div>
-                  <ArrowUpRight
-                    size={14}
-                    className="text-forest-text-light/50 group-hover:text-forest-teal group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300"
-                  />
+                  <ArrowUpRight size={14} className="text-forest-text-light/50 group-hover:text-forest-teal transition-all duration-300" />
                 </a>
-
-                <a
-                  href="https://www.linkedin.com/in/haiyunhe2"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-4 p-4 border border-border rounded-lg hover:border-forest-teal-light/50 bg-white/40 transition-all duration-300"
-                >
+                <a href="https://www.linkedin.com/in/haiyunhe2" target="_blank" className="group flex items-center gap-4 p-4 border border-border rounded-lg hover:border-forest-teal-light/50 bg-white/40 transition-all duration-300">
                   <Linkedin size={18} className="text-forest-teal" />
                   <div className="flex-1">
-                    <p className="font-body text-sm font-medium text-forest-deep group-hover:text-forest-teal transition-colors">
-                      LinkedIn
-                    </p>
-                    <p className="font-mono text-[10px] text-forest-text-light/70">
-                      linkedin.com/in/haiyunhe2
-                    </p>
+                    <p className="font-body text-sm font-medium text-forest-deep group-hover:text-forest-teal transition-colors">LinkedIn</p>
+                    <p className="font-mono text-[10px] text-forest-text-light/70">linkedin.com/in/haiyunhe2</p>
                   </div>
-                  <ArrowUpRight
-                    size={14}
-                    className="text-forest-text-light/50 group-hover:text-forest-teal group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300"
-                  />
+                  <ArrowUpRight size={14} className="text-forest-text-light/50 group-hover:text-forest-teal transition-all duration-300" />
                 </a>
-
-                <a
-                  href="https://github.com/haiyunhesg"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-4 p-4 border border-border rounded-lg hover:border-forest-teal-light/50 bg-white/40 transition-all duration-300"
-                >
+                <a href="https://github.com/haiyunhesg" target="_blank" className="group flex items-center gap-4 p-4 border border-border rounded-lg hover:border-forest-teal-light/50 bg-white/40 transition-all duration-300">
                   <Github size={18} className="text-forest-teal" />
                   <div className="flex-1">
-                    <p className="font-body text-sm font-medium text-forest-deep group-hover:text-forest-teal transition-colors">
-                      GitHub
-                    </p>
-                    <p className="font-mono text-[10px] text-forest-text-light/70">
-                      github.com/haiyunhesg
-                    </p>
+                    <p className="font-body text-sm font-medium text-forest-deep group-hover:text-forest-teal transition-colors">GitHub</p>
+                    <p className="font-mono text-[10px] text-forest-text-light/70">github.com/haiyunhesg</p>
                   </div>
-                  <ArrowUpRight
-                    size={14}
-                    className="text-forest-text-light/50 group-hover:text-forest-teal group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300"
-                  />
+                  <ArrowUpRight size={14} className="text-forest-text-light/50 group-hover:text-forest-teal transition-all duration-300" />
                 </a>
               </div>
             </Reveal>
@@ -657,36 +573,10 @@ function Footer() {
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <TreePine size={15} className="text-forest-teal" />
-            <p className="font-display text-sm font-semibold text-forest-deep">
-              {t("footer.brand")}
-            </p>
+            <p className="font-display text-sm font-semibold text-forest-deep">{t("footer.brand")}</p>
           </div>
           <div className="flex items-center gap-5">
-            <a
-              href="https://www.linkedin.com/in/haiyunhe2"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-mono text-[10px] text-forest-text-light/60 hover:text-forest-teal transition-colors duration-300"
-            >
-              LinkedIn
-            </a>
-            <a
-              href="https://github.com/haiyunhesg"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-mono text-[10px] text-forest-text-light/60 hover:text-forest-teal transition-colors duration-300"
-            >
-              GitHub
-            </a>
-            <a
-              href="mailto:haiyunhe2@gmail.com"
-              className="font-mono text-[10px] text-forest-text-light/60 hover:text-forest-teal transition-colors duration-300"
-            >
-              Email
-            </a>
-            <span className="font-mono text-[10px] text-forest-text-light/40">
-              &copy; {new Date().getFullYear()} Haiyun HE
-            </span>
+            <span className="font-mono text-[10px] text-forest-text-light/40">&copy; {new Date().getFullYear()} Haiyun HE</span>
           </div>
         </div>
       </div>
