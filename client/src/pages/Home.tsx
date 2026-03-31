@@ -40,11 +40,11 @@ const HAZELNUT_FLOOR_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/31051966342950
 const HAZELNUT_LADDER_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663429506689/5x8vi4uUHvhBMwKdnUb9Ct/hazelnut-ladder_e176554f.jpg";
 
 /* ─── New Generated Unified Illustrations ─── */
-const DUO_IMG = "/duolingo-study.png";
-const WEB_IMG = "/website-survivor.png";
+const DUO_IMG = "/duolingo-study-v2.png";
+const WEB_IMG = "/website-survivor-v2.png";
 const FILM_IMG = "/film-industry.png";
 const FREEDOM_IMG = "/freedom-dreamer.png";
-const MUSIC_IMG = "/hidden-vocalist.png";
+const MUSIC_IMG = "/hidden-vocalist-v2.png";
 
 /* ─── Reveal wrapper ─── */
 function Reveal({
