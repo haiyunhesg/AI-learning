@@ -282,7 +282,7 @@ function FunFactsSection() {
                 </div>
               ) : (
                 <div className="absolute inset-0 flex flex-col">
-                  <div className="relative flex-1 overflow-hidden">
+                  <div className="relative h-2/3 overflow-hidden">
                     <img 
                       src={facts[activeCard].image} 
                       alt="" 
@@ -298,15 +298,15 @@ function FunFactsSection() {
                       Reset
                     </button>
                   </div>
-                  <div className="p-6 bg-white/80 backdrop-blur-md">
-                    <h3 className="font-display text-xl font-semibold text-forest-deep mb-2">
+                  <div className="h-1/3 p-6 bg-white/80 backdrop-blur-md flex flex-col justify-center">
+                    <h3 className="font-display text-lg sm:text-xl font-semibold text-forest-deep mb-1 line-clamp-1">
                       {facts[activeCard].title}
                     </h3>
-                    <p className="font-body text-sm text-forest-text-light leading-relaxed">
+                    <p className="font-body text-xs sm:text-sm text-forest-text-light leading-relaxed line-clamp-2">
                       {facts[activeCard].description}
                     </p>
                     {facts[activeCard].hasLinks && (
-                      <div className="flex gap-3 mt-4">
+                      <div className="flex gap-3 mt-2">
                         <a href="https://open.spotify.com/playlist/6J8KKxI8NRnZ6rUPpE8Jvv" target="_blank" className="text-[10px] font-mono uppercase text-forest-teal hover:underline">Playlist</a>
                         <a href="https://open.spotify.com/track/3pUIhxyUFzuhRAFEJqtees" target="_blank" className="text-[10px] font-mono uppercase text-forest-teal hover:underline">Track</a>
                       </div>
